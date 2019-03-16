@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<div id="linklist">
+  <div id="plugin_zone_start_linklist">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
+
+  {if="count($links)==0"}
+    <div class="alert alert-warning">
+      <p class="mb-0">
+        {'Nothing found.'|t}
+      </p>
+    </div>
+  {elseif="!empty($search_term) or $search_tags !== '' or !empty($visibility) or $untaggedonly"}
+    <div class="alert alert-dark">
+      <p class="mb-0">
+        {function="sprintf(t('%s result', '%s results', $result_count), $result_count)"}
+        {if="!empty($search_term)"}
+          {'for'|t} <em><strong>{$search_term}</strong></em>
+        {/if}
+
+        {if="!empty($search_tags)"}
+          {$exploded_tags=explode(' ', $search_tags)}
+          {'tagged'|t}:
+          {loop="$exploded_tags"}
+              <span class="badge badge-secondary">
+                {$value}
+                &nbsp;
+                <a href="?removetag={function="urlencode($value)"}"
+                   title="{'Remove tag'|t}"
+                   class="text-reset"
+                >
+                  <span class="sr-only">{'Remove tag'|t}</span>
+                  <span aria-hidden="true">&times;</span>
+                </a>
+              </span>
+          {/loop}
+        {/if}
+        {if="!empty($visibility)"}
+          {'with status'|t} {$visibility|t}
+        {/if}
+        {if="$untaggedonly"}
+          {'without any tag'|t}
+        {/if}
+      </p>
+    </div>
+  {/if}
+
+  <ol id="linklist-loop" class="list-unstyled">
+    {ignore}Set translation here, for performance{/ignore}
+      {$strAddTag=t('Add tag')}
+      {$strEdit=t('Edit')}
+      {$strPermalink=t('Permalink')}
+    {ignore}End of translations{/ignore}
+
+    {loop="links"}
+      <li id="{$value.shorturl}"
+          class="mb-3 border-bottom"
+      >
+        <h2 class="h4">
+          <a href="{$value.real_url}" title="{$value.real_url}">
+            {$value.title}
+          </a>
+        </h2>
+        <p>
+          <a href="{$value.real_url}"
+             title="{$value.title}"
+             class="text-muted"
+          >
+            <code>{$value.url}</code>
+          </a>
+        </p>
+
+        {if="$value.description"}
+          <p>
+            {$value.description}
+          </p>
+        {/if}
+
+        {if="$value.tags"}
+          <p>
+            {$tag_counter=count($value.taglist)}
+            {loop="value.taglist"}
+              <a href="?addtag={$value|urlencode}"
+                 rel="tag"
+                 title="{$strAddTag}"
+                 class="badge badge-secondary text-dark"
+              >{$value}</a>
+              {if="$tag_counter - 1 != $counter"}&middot;{/if}
+            {/loop}
+            </p>
+        {/if}
+
+        <p class="text-muted">
+          {$last_modified_date=$value.updated_timestamp ? format_date($value.updated) : format_date($value.created)}
+          <a href="?{$value.shorturl}"
+             title="{$last_modified_date}"
+             rel="permalink"
+             class="btn btn-link btn-sm"
+          >
+            &para;
+            <span class="sr-only">{$strPermalink}</span>
+          </a>
+          <a href="https://web.archive.org/web/*/{$value.real_url}"
+             class="btn btn-link btn-sm text-muted text-reset"
+          >archive.org</a>
+          {if="isset($value.link_plugin)"}
+            &middot;
+            {loop="$value.link_plugin"}
+              {$value}
+              &middot;
+            {/loop}
+          {/if}
+          {if="$is_logged_in"}
+            <a href="?edit_link={$value.id}"
+               class="btn btn-link btn-sm text-lowercase text-white-50"
+            >
+              {$strEdit}
+            </a>
+          {/if}
+        </p>
+      </li>
+    {/loop}
+  </ol>
+</div>
+
+  <div id="plugin_zone_end_linklist">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
+
+{if="!empty($linkcount)"}
+  <p class="my-2 text-center">
+    <strong">{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
+    {if="$privateLinkcount > 0"}
+      &middot;
+      <strong>{$privateLinkcount}</strong> {function="t('private url', 'private urls', $privateLinkcount)"}
+    {/if}
+  </p>
+{/if}
+
+
+{include="page.footer"}
+
+</body>
+</html>

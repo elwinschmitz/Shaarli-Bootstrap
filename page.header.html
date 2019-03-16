@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand navbar-dark" role="navigation">
+  <a href="{$titleLink}" class="navbar-brand">
+    {$shaarlititle}
+  </a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a href="#search" class="nav-link">{'Search'|t}</a>
+    </li>
+    {loop="$plugins_header.buttons_toolbar"}
+      <li class="nav-item">
+        <a class="nav-link {$value.class}"
+           {loop="$value.attr"}
+             {$key}="{$value}"
+           {/loop}
+        >
+          {$value.html}
+        </a>
+      </li>
+    {/loop}
+  </ul>
+</nav>
+
+<div class="container-fluid"><!-- opened here, closed in page.footer.html -->
+
+  {if="!empty($newVersion) || !empty($versionError)"}
+    {if="$newVersion"}
+      <p class="alert alert-info" role="alert">
+        <a href="https://github.com/shaarli/Shaarli/releases">
+          Shaarli {$newVersion} {'is available'|t}
+        </a>
+      </p>
+    {/if}
+    {if="$versionError"}
+      <p class="alert alert-danger" role="alert">
+        {'Error'|t}: {$versionError}
+      </p>
+    {/if}
+  {/if}
+
+  {if="!empty($plugin_errors) && $is_logged_in"}
+    <div id="shaarli-errors-alert">
+      {loop="plugin_errors"}
+        <p class="alert alert-danger" role="alert">
+          {$value}
+        </p>
+      {/loop}
+    </div>
+  {/if}
+
+  {if="!empty($global_warnings) && $is_logged_in"}
+    <div id="shaarli-warnings-alert">
+      {loop="global_warnings"}
+        <p class="alert alert-warning" role="alert">
+          {$value}
+        </p>
+      {/loop}
+    </div>
+  {/if}

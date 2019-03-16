@@ -1,0 +1,72 @@
+
+<div class="my-5">
+  <form method="GET" name="searchform" id="search">
+    <div class="input-group my-1">
+      <label for="searchform_value" class="sr-only">{'Search text'|t}</label>
+      <input type="text"
+             id="searchform_value"
+             name="searchterm"
+             class="form-control"
+             placeholder="{'Search text'|t}"
+             {if="!empty($search_term)"}
+               value="{$search_term}"
+             {/if}
+      >
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-outline-primary">{'Search'|t}</button>
+      </div>
+    </div>
+    <div class="input-group my-1">
+      <label for="tagfilter_value" class="sr-only">{'Filter by tag'|t}</label>
+      <div class="input-group-prepend">
+        <div class="input-group-text">#</div>
+      </div>
+      <input type="text"
+              id="tagfilter_value"
+              name="searchtags"
+              class="form-control"
+              placeholder="{'Filter by tag'|t}"
+              {if="!empty($search_tags)"}
+                value="{$search_tags}"
+              {/if}
+              autocomplete="off"
+      >
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-outline-primary">{'Search'|t}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<footer id="footer">
+  <p class="text-muted">
+    <strong><a href="https://github.com/shaarli/Shaarli" class="text-muted">Shaarli</a></strong>
+    {if="$is_logged_in===true"}
+      {$version}
+    {/if}
+    &middot;
+    {'The personal, minimalist, super-fast, database free, bookmarking service'|t} {'by the Shaarli community'|t}
+    &middot;
+    <a href="doc/html/index.html" rel="nofollow" class="text-muted">
+      {'Documentation'|t}
+    </a>
+  </p>
+  {if="$plugins_footer.text"}
+    <p>
+      {loop="$plugins_footer.text"}
+        {$value}
+      {/loop}
+    </p>
+  {/if}
+</footer>
+
+</div><!-- closed here, opened in page.header.html -->
+
+{loop="$plugins_footer.endofpage"}
+  {$value}
+{/loop}
+
+{loop="$plugins_footer.js_files"}
+	<script src="{$value}#"></script>
+{/loop}

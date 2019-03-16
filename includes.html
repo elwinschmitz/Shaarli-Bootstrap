@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<title>{$pagetitle}</title>
+<meta name="viewport" content="width=device-width">
+<meta name="referrer" content="same-origin">
+
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css?v={$version_hash}" />
+{loop="$plugins_includes.css_files"}
+  <link rel="stylesheet" href="{$value}?v={$version_hash}" />
+{/loop}
+{if="is_file('data/user.css')"}
+  <link rel="stylesheet" href="data/user.css" />
+{/if}
+<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch" title="Shaarli search - {$shaarlititle}" />

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<div id="addlink-form">
+
+  <h2>{"Add a new url"|t}</h2>
+
+  <form method="GET" name="addform">
+    <div class="form-group">
+      <label for="shaare">{'URL or leave empty to post a note'|t}</label>
+      <input type="text" name="post" id="shaare" class="form-control" autofocus>
+    </div>
+    <button class="btn btn-primary">{'Add link'|t}</button>
+  </form>
+
+</div>
+
+{include="page.footer"}
+</body>
+</html>

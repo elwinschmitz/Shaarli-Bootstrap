@@ -3,6 +3,13 @@
     {$shaarlititle}
   </a>
   <ul class="navbar-nav ml-auto">
+    {if="$is_logged_in || $openshaarli"}
+      <li class="nav-item">
+        <a href="?do=addlink" class="nav-link">
+          {'Add'|t}
+        </a>
+      </li>
+    {/if}
     <li class="nav-item">
       <a href="#search" class="nav-link">{'Search'|t}</a>
     </li>

@@ -1,0 +1,13 @@
+{
+  "name": "shaarli-bootstrap",
+  "version": "0.0.1",
+  "description": "A Shaarli theme build with Bootstrap (only)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Elwin Schmitz <ik@elwin.nu>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}

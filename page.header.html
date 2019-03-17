@@ -24,6 +24,15 @@
         </a>
       </li>
     {/loop}
+    {if="$is_logged_in"}
+      <li class="nav-item">
+        <a href="?do=logout" class="nav-link">{'Logout'|t}</a>
+      </li>
+    {else}
+      <li class="nav-item">
+        <a href="?do=login" class="nav-link">{'Login'|t}</a>
+      </li>
+    {/if}
   </ul>
 </nav>
 

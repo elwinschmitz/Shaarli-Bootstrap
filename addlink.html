@@ -13,9 +13,16 @@
   <form method="GET" name="addform">
     <div class="form-group">
       <label for="shaare">{'URL or leave empty to post a note'|t}</label>
-      <input type="text" name="post" id="shaare" class="form-control" autofocus>
+      <input type="url"
+             name="post"
+             id="shaare"
+             autofocus
+             class="form-control"
+      />
     </div>
-    <button class="btn btn-primary">{'Add link'|t}</button>
+    <button type="submit"
+            class="btn btn-primary"
+    >{'Add link'|t}</button>
   </form>
 
 </div>

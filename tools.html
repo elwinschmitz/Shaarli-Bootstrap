@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+  {include="page.header"}
+
+<h2>{'Settings'|t}</h2>
+<div class="list-group mb-5">
+  <a href="?do=configure"
+     class="list-group-item list-group-item-action"
+  >
+    {'Configure your Shaarli'|t}
+  </a>
+  <a href="?do=pluginadmin"
+     class="list-group-item list-group-item-action"
+  >
+    {'Plugin administration'|t}
+  </a>
+  {if="!$openshaarli"}
+    <a href="?do=changepasswd"
+       class="list-group-item list-group-item-action"
+    >
+      {'Change password'|t}
+    </a>
+  {/if}
+  <a href="?do=changetag"
+     class="list-group-item list-group-item-action"
+  >
+    {'Manage tags'|t}
+  </a>
+  <a href="?do=import"
+     class="list-group-item list-group-item-action"
+  >
+    {'Import links'|t}
+  </a>
+  <a href="?do=export"
+     class="list-group-item list-group-item-action"
+  >
+    {'Export bookmarks'|t}
+  </a>
+  {if="$thumbnails_enabled"}
+    <a href="?do=thumbs_update"
+       class="list-group-item list-group-item-action"
+    >
+      {'Synchronize thumbnails'|t}
+    </a>
+  {/if}
+
+  {loop="$tools_plugin"}
+    <div class="list-group-item">
+      {$value}
+    </div>
+  {/loop}
+</div>
+
+<h2>Bookmarklets</h2>
+<p>
+  {'Drag one of these button to your bookmarks toolbar or right-click it and "Bookmark This Link"'|t},
+  {'then click on the bookmarklet in any page you want to share.'|t}
+</p>
+<p class="mb-5">
+  <a title="{'Drag this link to your bookmarks toolbar or right-click it and \'Bookmark This Link\''|t},
+{'then click ( ✚Shaare url ) button in any page you want to share'|t}"
+     class="btn btn-outline-warning"
+     href="javascript:(function(){
+      var url=location.href;
+      var title=document.title||url;
+      var desc=document.getSelection().toString();
+      if(desc.length>4000){
+        desc=desc.substr(0,4000)+'...';
+        alert('{function="str_replace(' ', '%20', t('The selected text is too long, it will be truncated.'))"}');
+      }
+      window.open(
+        '{$pageabsaddr}?post='+encodeURIComponent(url)+
+        '&amp;title='+encodeURIComponent(title)+
+        '&amp;description='+encodeURIComponent(desc)+
+        '&amp;source=bookmarklet','_blank','menubar=no,height=800,width=600,toolbar=no,scrollbars=yes,dialog=1'
+      );
+      })();"
+  >
+    ✚ {'Shaare url'|t}
+  </a>
+  &middot;
+  <a title="{'Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link'|t},
+{'then click ✚Add Note button anytime to start composing a private Note (text post) to your Shaarli'|t}"
+     class="btn btn-outline-warning"
+     href="javascript:(function(){
+      var desc=document.getSelection().toString();
+      if(desc.length>4000){
+        desc=desc.substr(0,4000)+'...';
+        alert('{function="str_replace(' ', '%20', t('The selected text is too long, it will be truncated.'))"}');
+      }
+      window.open(
+        '{$pageabsaddr}?private=1&amp;post='+
+        '&amp;description='+encodeURIComponent(desc)+
+        '&amp;source=bookmarklet','_blank','menubar=no,height=800,width=600,toolbar=no,scrollbars=yes,dialog=1'
+      );
+      })();"
+  >
+    ✚ {'Add Note'|t}
+  </a>
+</p>
+
+
+<h2>{'3rd party'|t}</h2>
+<div class="list-group mb-5">
+  <a href="https://addons.mozilla.org/fr/firefox/addon/shaarli/"
+     class="list-group-item list-group-item-action"
+  >
+    Firefox {'plugin'|t}
+  </a>
+  <a href="https://chrome.google.com/webstore/detail/shiny-shaarli/hajdfkmbdmadjmmpkkbbcnllepomekin"
+     class="list-group-item list-group-item-action"
+  >
+    Chrome {'plugin'|t}
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=com.dimtion.shaarlier&hl=fr"
+     class="list-group-item list-group-item-action"
+  >
+    Android Shaarlier
+  </a>
+  <a href="https://stakali.toneiv.eu/"
+     class="list-group-item list-group-item-action"
+  >
+    Android Stakali
+  </a>
+  <a href="https://itunes.apple.com/app/ShaarliOS/id1027441388?mt=8"
+     class="list-group-item list-group-item-action"
+  >
+    iOS
+  </a>
+</div>
+
+  {include="page.footer"}
+</body>
+</html>

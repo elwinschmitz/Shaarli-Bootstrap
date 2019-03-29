@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<form method="POST" name="configform" id="configform">
+  <input type="hidden" name="token" value="{$token}" />
+
+  <h2>{'Configure'|t}</h2>
+
+  <p class="form-group">
+    <label for="title">
+      Shaarli {'title'|t}
+    </label>
+    <input type="text"
+           name="title"
+           id="title"
+           size="50"
+           value="{$title}"
+           class="form-control"
+    />
+  </p>
+  <p class="form-group">
+    <label for="titleLink">
+      {'Home link'|t}
+    </label>
+    <input type="text"
+           name="titleLink"
+           id="titleLink"
+           size="50"
+           value="{$titleLink}"
+           class="form-control text-monospace"
+    />
+    <small class="form-text text-muted">
+      {'Default value'|t}: ?
+    </small>
+  </p>
+  <p class="form-group">
+    <label for="theme">
+      {'Theme'|t}
+    </label>
+    <select name="theme"
+            id="theme"
+            class="custom-select"
+    >
+      {loop="$theme_available"}
+        <option value="{$value}"
+                {if="$value===$theme"} selected {/if}
+        >
+          {$value}
+        </option>
+      {/loop}
+    </select>
+  </p>
+  <p class="form-group">
+    <label for="language">
+      {'Language'|t}
+    </label>
+    <select name="language"
+            id="language"
+            class="custom-select"
+    >
+      {loop="$languages"}
+        <option value="{$key}"
+                {if="$key===$language"} selected {/if}
+        >
+          {$value}
+        </option>
+      {/loop}
+    </select>
+  </p>
+  <p class="mb-1">
+    <label for="continent">
+      {'Timezone'|t}
+    </label>
+  </p>
+  <fieldset class="form-group form-inline">
+    <span class="mb-1 mb-sm-0 mr-1">
+      <label for="continent" class="justify-content-start">
+        {'Continent'|t}
+      </label>
+
+      <select name="continent"
+              id="continent"
+              class="custom-select"
+      >
+        {loop="$continents"}
+          {if="$key !== 'selected'"}
+            <option value="{$value}"
+                    {if="$continents.selected === $value"} selected {/if}
+            >
+              {$value}
+            </option>
+          {/if}
+        {/loop}
+      </select>
+    </span>
+    <span class="mb-1 mb-sm-0 ">
+      <label for="city" class="justify-content-start">
+        {'City'|t}
+      </label>
+      <select id="city"
+              name="city"
+              class="custom-select"
+      >
+        {loop="$cities"}
+          {if="$key !== 'selected'"}
+            <option value="{$value.city}"
+                    {if="$cities.selected === $value.city"} selected {/if}
+            >
+              {function="str_replace('_', ' ', $value.city)"}
+            </option>
+          {/if}
+        {/loop}
+      </select>
+    </span>
+  </fieldset>
+  <p class="form-check">
+    <input type="checkbox"
+           name="disablesessionprotection"
+           id="disablesessionprotection"
+           {if="$session_protection_disabled"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="disablesessionprotection" class="form-check-label">
+      {'Disable session cookie hijacking protection'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Check this if you get disconnected or if your IP address changes often'|t}
+    </small>
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="privateLinkByDefault"
+           id="privateLinkByDefault"
+           {if="$private_links_default"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="privateLinkByDefault" class="form-check-label">
+      {'Private links by default'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'All new links are private by default'|t}
+    </small>
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="hidePublicLinks"
+           id="hidePublicLinks"
+           {if="$hide_public_links"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="hidePublicLinks" class="form-check-label">
+      {'Hide public links'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Do not show any links if the user is not logged in'|t}
+    </small>
+  </p>
+  <p class="form-group">
+    <label for="enableThumbnails_none">
+      {'Enable thumbnails'|t}
+    </label>
+    <span class="form-check">
+      <input type="radio"
+            name="enableThumbnails"
+            id="enableThumbnails_none"
+            value="none"
+            {if="$thumbnails_mode=='none' || !$gd_enabled"} checked {/if}
+            class="form-check-input"
+      />
+      <label for="enableThumbnails_none" class="form-check-label">
+        {'None'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+              name="enableThumbnails"
+              id="enableThumbnails_common"
+              value="common"
+              {if="$thumbnails_mode=='common'"} checked {/if}
+              {if="!$gd_enabled"} disabled {/if}
+              class="form-check-input"
+      />
+      <label for="enableThumbnails_common" class="form-check-label">
+        {'Only common media hosts'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+              name="enableThumbnails"
+              id="enableThumbnails_all"
+              value="all"
+              {if="$thumbnails_mode=='all'"} checked {/if}
+              {if="!$gd_enabled"} disabled {/if}
+              class="form-check-input"
+      />
+      <label for="enableThumbnails_all" class="form-check-label">
+        {'All'|t}
+      </label>
+    </span>
+    {if="!$gd_enabled"}
+      <small class="form-text text-muted">
+        {'You need to enable the extension <code>php-gd</code> to use thumbnails.'|t}
+      </small>
+    {/if}
+  </p>
+  {if="$gd_enabled && $thumbnails_enabled"}
+    <p class="form-group">
+      <label>{'Synchronize thumbnails'|t}</label><br>
+      <a href="?do=thumbs_update" class="btn btn-outline-info">
+        {'Synchronize thumbnails'|t}
+      </a>
+    </p>
+  {/if}
+  <p class="form-check">
+    <input type="checkbox"
+           name="enableRssPermalinks"
+           id="enableRssPermalinks"
+           {if="$enable_rss_permalinks"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="enableRssPermalinks" class="form-check-label">
+      {'RSS direct links'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Check this to use direct URL instead of permalink in feeds'|t}
+    </small>
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="enableApi"
+           id="enableApi"
+           autocorrect="off"
+           autocapitalize="none"
+           {if="$api_enabled"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="enableApi" class="form-check-label">
+      {'Enable REST API'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Allow third party software to use Shaarli such as mobile applications'|t}
+    </small>
+  </p>
+  <p class="form-group">
+    <label for="apiSecret">
+      {'API secret'|t}
+    </label>
+    <input type="text"
+           name="apiSecret"
+           id="apiSecret"
+           size="50"
+           value="{$api_secret}"
+           class="form-control text-monospace"
+    />
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="updateCheck"
+           id="updateCheck"
+           {if="$enable_update_check"} checked {/if}
+           class="form-check-input"
+    />
+    <label for="updateCheck" class="form-check-label">
+      {'Check updates'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Notify me when a new release is ready'|t}
+    </small>
+  </p>
+  <p>
+    <button type="submit" class="btn btn-primary btn-block" name="save">{'Save'|t}</button>
+  </p>
+
+</form>
+
+{include="page.footer"}
+</body>
+</html>
+

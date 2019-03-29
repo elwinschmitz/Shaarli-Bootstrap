@@ -1,11 +1,21 @@
 <nav class="navbar navbar-expand navbar-dark" role="navigation">
+  {ignore}
+    Fill the variables with an invisible 'truthy/falsey' value, to be able to use it later as a boolean:
+  {/ignore}
+  {$doAdd=($_GET['do'] === 'addlink') ? ' ' : ''}
+  {$doTools=(in_array($_GET['do'], ['tools','configure','changepasswd','changetag','import','export'], true)) ? ' ' : ''}
+  {$doLogin=($_GET['do'] === 'login') ? ' ' : ''}
+
   <a href="{$titleLink}" class="navbar-brand">
     {$shaarlititle}
   </a>
   <ul class="navbar-nav ml-auto">
     {if="$is_logged_in || $openshaarli"}
-      <li class="nav-item">
-        <a href="?do=addlink" class="nav-link">
+      <li class="nav-item {if="$doAdd"} active {/if}">
+        <a href="?do=addlink"
+           class="nav-link"
+           {if="$doAdd"} aria-current="page" {/if}
+        >
           {'Add'|t}
         </a>
       </li>
@@ -25,15 +35,27 @@
       </li>
     {/loop}
     {if="$is_logged_in"}
-      <li class="nav-item">
-        <a href="?do=tools" class="nav-link">{'Tools'|t}</a>
+      <li class="nav-item {if="$doTools"} active {/if}">
+        <a href="?do=tools"
+           class="nav-link"
+           {if="$doTools"} aria-current="true" {/if}
+        >
+          {'Tools'|t}
+        </a>
       </li>
       <li class="nav-item">
-        <a href="?do=logout" class="nav-link">{'Logout'|t}</a>
+        <a href="?do=logout" class="nav-link">
+          {'Logout'|t}
+        </a>
       </li>
     {else}
-      <li class="nav-item">
-        <a href="?do=login" class="nav-link">{'Login'|t}</a>
+      <li class="nav-item {if="$doLogin"} active {/if}">
+        <a href="?do=login"
+           class="nav-link"
+           {if="$doLogin"} aria-current="page" {/if}
+        >
+          {'Login'|t}
+        </a>
       </li>
     {/if}
   </ul>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<form method="GET" name="exportform" id="exportform">
+  <input type="hidden" name="do" value="export" />
+  <input type="hidden" name="token" value="{$token}" />
+
+  <h2>{'Export'|t}</h2>
+
+  <p class="form-group">
+    <label for="selection_all">
+      {'Selection'|t}
+    </label>
+    <span class="form-check">
+      <input type="radio"
+             name="selection"
+             id="selection_all"
+             value="all"
+             checked
+             class="form-check-input"
+      />
+      <label for="selection_all" class="form-check-label">
+        {'All'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+             name="selection"
+             id="selection_private"
+             value="private"
+             {if="$privateLinkcount === 0"} disabled {/if}
+             class="form-check-input"
+      />
+      <label for="selection_private" class="form-check-label">
+        {'Only Private'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+             name="selection"
+             id="selection_public"
+             value="public"
+             {if="($linkcount - $privateLinkcount) < 1"} disabled {/if}
+             class="form-check-input"
+      />
+      <label for="selection_public" class="form-check-label">
+        {'Only Public'|t}
+      </label>
+    </span>
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="prepend_note_url"
+           id="prepend_note_url"
+           class="form-check-input"
+    />
+    <label for="prepend_note_url" class="form-check-label">
+      {"Prepend note permalinks with this Shaarli instance's URL"|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Useful to import bookmarks in a web browser'|t}
+    </small>
+  </p>
+
+  <p>
+    <button type="submit" class="btn btn-primary">
+      {'Export'|t}
+    </button>
+  </p>
+
+</form>
+
+{include="page.footer"}
+</body>
+</html>

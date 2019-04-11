@@ -102,7 +102,7 @@
             </p>
         {/if}
 
-        <p class="text-muted">
+        <p class="text-muted d-flex">
           {$last_modified_date=$value.updated_timestamp ? format_date($value.updated) : format_date($value.created)}
           <a href="?{$value.shorturl}"
              title="{$last_modified_date}"
@@ -112,16 +112,6 @@
             &para;
             <span class="sr-only">{$strPermalink}</span>
           </a>
-          <a href="https://web.archive.org/web/*/{$value.real_url}"
-             class="btn btn-link btn-sm text-muted text-reset"
-          >archive.org</a>
-          {if="isset($value.link_plugin)"}
-            &middot;
-            {loop="$value.link_plugin"}
-              {$value}
-              &middot;
-            {/loop}
-          {/if}
           {if="$is_logged_in"}
             <a href="?edit_link={$value.id}"
                class="btn btn-link btn-sm text-lowercase text-white-50"
@@ -129,6 +119,20 @@
               {$strEdit}
             </a>
           {/if}
+          <span class="ml-auto">
+            <a href="https://web.archive.org/web/*/{$value.real_url}"
+               class="btn btn-link btn-sm"
+            >
+              <svg viewBox="0 0 56 64" style="width:0.875rem;height:1rem">
+                <path fill="currentColor" d="M0 7l28-7 27 6-1 2H2zm2 3h52v5H2zm0 46h52v4H2zm-2 5h56v3H0v-3m3-44h5v37H3V17m45 0h5v37h-5V17m-31 0h5v37h-5V17m17 0h5v37h-5V17" />
+              </svg>
+            </a>
+            {if="isset($value.link_plugin)"}
+              {loop="$value.link_plugin"}
+                {$value}
+              {/loop}
+            {/if}
+          </span>
         </p>
       </li>
     {/loop}

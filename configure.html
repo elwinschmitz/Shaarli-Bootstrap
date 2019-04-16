@@ -234,8 +234,6 @@
     <input type="checkbox"
            name="enableApi"
            id="enableApi"
-           autocorrect="off"
-           autocapitalize="none"
            {if="$api_enabled"} checked {/if}
            class="form-check-input"
     />
@@ -255,6 +253,8 @@
            id="apiSecret"
            size="50"
            value="{$api_secret}"
+           autocorrect="off"
+           autocapitalize="none"
            class="form-control text-monospace"
     />
   </p>

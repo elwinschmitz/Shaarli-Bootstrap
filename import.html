@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<form method="POST" enctype="multipart/form-data" name="uploadform" id="uploadform">
+  <input type="hidden" name="do" value="import" />
+  <input type="hidden" name="token" value="{$token}" />
+  <input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}" />
+
+  <h2>{'Import'|t}</h2>
+
+  <p>
+    {'Maximum size allowed:'|t} <strong>{$maxfilesizeHuman}</strong>
+  </p>
+  <p class="form-group">
+    <label for="import-field">
+      {'From file'|t}:
+    </label>
+    <input type="file"
+           name="filetoupload"
+           id="import-field"
+           class=""
+           accept="text/html"
+    />
+  </p>
+  <p class="form-group">
+    <label for="privacy_default">
+      {'Visibility'|t}
+    </label>
+    <span class="form-check">
+      <input type="radio"
+             name="privacy"
+             id="privacy_default"
+             value="default"
+             checked
+             class="form-check-input"
+      />
+      <label for="privacy_default" class="form-check-label">
+        {'Use values from the imported file, default to public'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+             name="privacy"
+             id="privacy_private"
+             value="private"
+             class="form-check-input"
+      />
+      <label for="privacy_private" class="form-check-label">
+        {'Import all bookmarks as private'|t}
+      </label>
+    </span>
+    <span class="form-check">
+      <input type="radio"
+             name="privacy"
+             id="privacy_public"
+             value="public"
+             class="form-check-input"
+      />
+      <label for="privacy_public" class="form-check-label">
+        {'Import all bookmarks as public'|t}
+      </label>
+    </span>
+  </p>
+  <p class="form-check">
+    <input type="checkbox"
+           name="overwrite"
+           id="overwrite"
+           class="form-check-input"
+    />
+    <label for="overwrite" class="form-check-label">
+      {'Overwrite existing bookmarks'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Duplicates based on URL'|t}
+    </small>
+  </p>
+  <p class="form-group">
+    <label for="default_tags">
+      {'Add default tags'|t}
+    </label>
+    <input type="text"
+           name="default_tags"
+           id="default_tags"
+           value="{$title}"
+           class="form-control"
+           placeholder="{'Tag'|t}"
+    />
+  </p>
+  <p>
+    <button type="submit"
+            name="import_file"
+            class="btn btn-primary"
+    >{'Import'|t}</button>
+  </p>
+</form>
+
+{include="page.footer"}
+</body>
+</html>

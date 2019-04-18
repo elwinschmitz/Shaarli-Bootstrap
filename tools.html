@@ -47,13 +47,15 @@
       {'Synchronize thumbnails'|t}
     </a>
   {/if}
-
-  {loop="$tools_plugin"}
-    <div class="list-group-item">
-      {$value}
-    </div>
-  {/loop}
 </div>
+
+{if="count($tools_plugin)>0"}
+  <div class="my-5">
+    {loop="$tools_plugin"}
+      {$value}
+    {/loop}
+  </div>
+{/if}
 
 <h2>Bookmarklets</h2>
 <p>

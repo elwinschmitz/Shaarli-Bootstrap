@@ -49,6 +49,9 @@
       <textarea name="lf_description"
                 id="lf_description"
                 class="form-control form-control-sm"
+                {if="strlen($link.description) > 42"}
+                  rows="8"
+                {/if}
       >{$link.description}</textarea>
     </p>
 

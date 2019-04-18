@@ -39,7 +39,7 @@
 </div>
 
 
-<footer id="footer">
+<footer id="footer" class="text-center">
   <p class="text-muted">
     <strong><a href="https://github.com/shaarli/Shaarli" class="text-muted">Shaarli</a></strong>
     {if="$is_logged_in===true"}
@@ -59,7 +59,7 @@
       {/loop}
     </p>
   {/if}
-  <p class="text-center">
+  <p>
     {if="$is_logged_in"}
       <a href="?do=logout" class="btn btn-outline-secondary btn-sm">
         {'Logout'|t}

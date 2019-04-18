@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<form method="POST"
+      action="?do=save_pluginadmin"
+      name="pluginform"
+      id="pluginform"
+      class="mb-5"
+>
+  <input type="hidden" name="token" value="{$token}" />
+
+  <h2>{'Plugin administration'|t}</h2>
+
+  <section id="enabled_plugins" class="mb-4">
+    <h3>{'Enabled Plugins'|t}</h3>
+
+    {if="count($enabledPlugins)==0"}
+      <p class="text-white-50">
+        {'No plugin enabled.'|t}
+      </p>
+    {else}
+      {loop="$enabledPlugins"}
+        <p class="form-check">
+          <input type="checkbox"
+                  name="{$key}"
+                  id="{$key}"
+                  checked
+                  class="form-check-input"
+          />
+          <label for="{$key}" class="form-check-label">
+            {function="str_replace('_', ' ', $key)"}
+          </label>
+          <small class="form-text text-muted">
+            {$value.description}
+          </small>
+        </p>
+
+        {ignore}
+          {if="count($enabledPlugins)>1"}
+            <small class="mt-2 form-text text-muted form-inline">
+              <span class="input-group input-group-sm">
+                <span class="input-group-prepend">
+                  <label for="order_{$key}" class="input-group-text">{'Order'|t}</label>
+                </span>
+                <input type="number"
+                       name="order_{$key}"
+                       id="order_{$key}"
+                       value="{$counter}"
+                       min="0"
+                       max="{function="count($enabledPlugins)-1"}"
+                       step="1"
+                       class="form-control"
+                />
+              </span>
+            </small>
+          {/if}
+        {/ignore}
+      {/loop}
+      <p>
+        <button type="submit"
+                name="save"
+                value="{'Save'|t}"
+                class="btn btn-primary"
+        >{'Save'|t}</button>
+      </p>
+    {/if}
+  </section>
+
+  <section id="disabled_plugins" class="mb-4">
+    <h3>{'Disabled Plugins'|t}</h3>
+
+    {if="count($disabledPlugins)==0"}
+      <p class="text-white-50">
+        {'No plugin disabled.'|t}
+      </p>
+    {else}
+      {loop="$disabledPlugins"}
+        <p class="form-check">
+          <input type="checkbox"
+                 name="{$key}"
+                 id="{$key}"
+                 class="form-check-input"
+          />
+          <label for="{$key}" class="form-check-label">
+            {function="str_replace('_', ' ', $key)"}
+          </label>
+          <small class="form-text text-muted">
+            {$value.description}
+          </small>
+        </p>
+      {/loop}
+    {/if}
+    <p>
+      {"More plugins available"|t}
+      <a href="doc/html/Community-&-Related-software/#third-party-plugins">{"in the documentation"|t}</a>.
+    </p>
+  </section>
+
+  <p>
+    <button type="submit"
+            name="save"
+            value="{'Save'|t}"
+            class="btn btn-primary"
+    >{'Save'|t}</button>
+  </p>
+</form>
+
+<form method="POST"
+      action="?do=save_pluginadmin"
+>
+  <h2>{'Plugin configuration'|t}</h2>
+
+  <section id="plugin_parameters">
+    {if="count($enabledPlugins)==0"}
+      <p>
+        {'No plugin enabled.'|t}
+      </p>
+    {else}
+      {$nbParameters=0}
+
+      {loop="$enabledPlugins"}
+        {$nbParameters=$nbParameters+count($value.parameters)}
+
+        {if="count($value.parameters) > 0"}
+          <fieldset class="mb-3">
+            <h3>{function="str_replace('_', ' ', $key)"}</h3>
+
+            {loop="$value.parameters"}
+              <p class="form-group">
+                <label for="{$key}">
+                  <code>{$key}</code>
+                </label>
+                <input type="text"
+                       name="{$key}"
+                       id="{$key}"
+                       value="{$value.value}"
+                       class="form-control"
+                />
+                {if="isset($value.desc)"}
+                  <small class="form-text text-muted">
+                    {$value.desc}
+                  </small>
+                {/if}
+              </p>
+            {/loop}
+            </fieldset>
+        {/if}
+      {/loop}
+
+      {if="$nbParameters===0"}
+        <p class="text-white-50">
+          {'No parameter available.'|t}
+        </p>
+      {else}
+        <p>
+          <button type="submit"
+                  name="parameters_form"
+                  class="btn btn-primary"
+          >{'Save'|t}</button>
+        </p>
+      {/if}
+    {/if}
+  </section>
+</form>
+
+{include="page.footer"}
+
+</body>
+</html>

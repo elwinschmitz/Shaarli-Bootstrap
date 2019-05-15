@@ -70,7 +70,7 @@
           <small class="badge badge-secondary badge-pill float-right">{$strPrivate}</small>
         {/if}
 
-        <h2 class="h4">
+        <h2 class="h4 text-break">
           <a href="{$value.real_url}" title="{$value.real_url}">{$value.title}</a>
         </h2>
         <p>
@@ -83,7 +83,7 @@
         </p>
 
         {if="$value.description"}
-          <p>
+          <p class="text-break">
             {$value.description}
           </p>
         {/if}

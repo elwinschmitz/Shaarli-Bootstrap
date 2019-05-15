@@ -1,5 +1,13 @@
 
 <div class="my-5">
+
+  {ignore}<!-- defined here globally, also used by other forms -->{/ignore}
+  {if="!empty($tags)"}
+    <datalist id="tagsList">
+      {loop="$tags"}<option>{$key}</option>{/loop}
+    </datalist>
+  {/if}
+
   <form method="GET" name="searchform" id="search">
     <div class="input-group my-1">
       <label for="searchform_value" class="sr-only">{'Search text'|t}</label>
@@ -30,6 +38,7 @@
                 value="{$search_tags}"
               {/if}
               autocomplete="off"
+              {if="!empty($tags)"}list="tagsList"{/if}
       />
       <div class="input-group-append">
         <button type="submit" class="btn btn-outline-primary">{'Search'|t}</button>

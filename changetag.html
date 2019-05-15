@@ -9,11 +9,6 @@
 <div id="changetag-form">
   <form method="POST" name="changetag" id="changetag">
     <input type="hidden" name="token" value="{$token}" />
-    {if="!empty($tags)"}
-      <datalist id="tagsList">
-        {loop="$tags"}<option>{$key}</option>{/loop}
-      </datalist>
-    {/if}
 
     <h2>{"Manage tags"|t}</h2>
 

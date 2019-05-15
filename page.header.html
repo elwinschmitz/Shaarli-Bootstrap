@@ -14,14 +14,18 @@
       <li class="nav-item {if="$doAdd"} active {/if}">
         <a href="?do=addlink"
            class="nav-link"
+           title="{'Add'|t}"
+           aria-label="{'Add'|t}"
            {if="$doAdd"} aria-current="page" {/if}
-        >
-          {'Add'|t}
-        </a>
+        >✚</a>
       </li>
     {/if}
     <li class="nav-item">
-      <a href="#search" class="nav-link">{'Search'|t}</a>
+      <a href="#search"
+         title="{'Search'|t}"
+         aria-label="{'Search'|t}"
+         class="nav-link"
+      >?</a>
     </li>
     {if="$is_logged_in"}
       <li class="nav-item {if="$doTools"} active {/if}">

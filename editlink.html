@@ -63,7 +63,13 @@
              value="{$link.tags}"
              class="form-control"
              autocomplete="off"
+             {if="!empty($link.tags)"}list="tagsList"{/if}
       />
+      {if="!empty($tags)"}
+        <datalist id="tagsList">
+          {loop="$tags"}<option>{$key}</option>{/loop}
+        </datalist>
+      {/if}
     </p>
 
     <p class="form-group">

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<div id="changetag-form">
+  <form method="POST" name="changetag" id="changetag">
+    <input type="hidden" name="token" value="{$token}" />
+    {if="!empty($tags)"}
+      <datalist id="tagsList">
+        {loop="$tags"}<option>{$key}</option>{/loop}
+      </datalist>
+    {/if}
+
+    <h2>{"Manage tags"|t}</h2>
+
+    <p class="form-group">
+      <label for="fromtag">{'Tag'|t}</label>
+      <input type="text"
+             name="fromtag"
+             id="fromtag"
+             class="form-control"
+             autocomplete="off"
+             {if="!empty($tags)"}list="tagsList"{/if}
+      />
+    </p>
+
+    <p class="form-group">
+      <label for="totag">{'New tag name'|t}</label>
+      <input type="text"
+             name="totag"
+             id="totag"
+             class="form-control"
+             autocomplete="off"
+             {if="!empty($tags)"}list="tagsList"{/if}
+      />
+      <small class="form-text text-muted">
+        {'Case sensitive'|t}
+      </small>
+    </p>
+
+    <p>
+      <button type="submit"
+              name="renametag"
+              class="btn btn-primary"
+      >
+        {'Rename'|t}
+      </button>
+      <button type="submit"
+              name="deletetag"
+              class="btn btn-outline-danger"
+      >
+        {'Delete'|t}
+      </button>
+    </p>
+  </form>
+
+  <p>
+    {'You can also edit tags in the'|t} <a href="?do=taglist&sort=usage">{'tag list'|t}</a>.
+  </p>
+</div>
+
+{include="page.footer"}
+</body>
+</html>

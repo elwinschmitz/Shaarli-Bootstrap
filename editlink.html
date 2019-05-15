@@ -6,8 +6,8 @@
 <body class="text-light bg-dark">
 {include="page.header"}
 
-<div id="editlinkform">
-  <form method="post" name="linkform">
+<div id="editlink-form">
+  <form method="POST" name="linkform" id="linkform">
     <input type="hidden" name="token" value="{$token}" />
     <input type="hidden" name="lf_linkdate" value="{$link.linkdate}" />
     {if="$http_referer"}

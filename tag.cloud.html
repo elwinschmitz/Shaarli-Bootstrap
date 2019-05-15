@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<h2>{'Tag cloud'|t} - {function="count($tags)"} {'tags'|t}</h2>
+
+{if="!empty($search_tags)"}
+  <p>
+    <a href="?searchtags={$search_tags|urlencode}" class="pure-button pure-button-shaarli">
+      {'List all links with those tags'|t}
+    </a>
+  </p>
+{/if}
+
+<div id="search-tagcloud" class="my-3">
+  <form method="GET">
+    <input type="hidden" name="do" value="tagcloud" />
+
+    <div class="input-group my-1">
+      <label for="tagfilter_value" class="sr-only">{'Filter by tag'|t}</label>
+      <div class="input-group-prepend">
+        <div class="input-group-text">#</div>
+      </div>
+      <input type="text"
+              id="tagfilter_value"
+              name="searchtags"
+              class="form-control"
+              placeholder="{'Filter by tag'|t}"
+              {if="!empty($search_tags)"}
+                value="{$search_tags}"
+              {/if}
+              autocomplete="off"
+              {if="!empty($tags)"}list="tagsList"{/if}
+      />
+      <div class="input-group-append">
+        <button type="submit"
+                class="btn btn-outline-primary"
+        >{'Filter'|t}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{include="tag.sort"}
+
+<div id="plugin_zone_start_tagcloud">
+  {loop="$plugin_start_zone"}
+    {$value}
+  {/loop}
+</div>
+
+<div id="cloudtag" class="text-center">
+  {loop="tags"}
+    <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+       style="font-size:{$value.size}em"
+    >{$key}</a>
+
+    {loop="$value.tag_plugin"}
+      {$value}
+    {/loop}
+  {/loop}
+</div>
+
+<div id="plugin_zone_end_tagcloud">
+  {loop="$plugin_end_zone"}
+    {$value}
+  {/loop}
+</div>
+
+{include="page.footer"}
+</body>
+</html>
+

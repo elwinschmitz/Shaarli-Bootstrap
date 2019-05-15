@@ -3,6 +3,7 @@
     Fill the variables with an invisible 'truthy/falsey' value, to be able to use it later as a boolean:
   {/ignore}
   {$doAdd=($_GET['do'] === 'addlink') ? ' ' : ''}
+  {$doTags=($_GET['do'] === 'tagcloud') ? ' ' : ''}
   {$doTools=(in_array($_GET['do'], ['tools','configure','changepasswd','changetag','import','export'], true)) ? ' ' : ''}
   {$doLogin=($_GET['do'] === 'login') ? ' ' : ''}
 
@@ -20,6 +21,14 @@
         >✚</a>
       </li>
     {/if}
+    <li class="nav-item {if="$doTags"} active {/if}">
+      <a href="?do=tagcloud"
+        class="nav-link"
+        title="{'Tags'|t}"
+        aria-label="{'Tags'|t}"
+        {if="$doTags"} aria-current="page" {/if}
+      >#</a>
+    </li>
     <li class="nav-item">
       <a href="#search"
          title="{'Search'|t}"

@@ -1,0 +1,20 @@
+<p>
+  {'Sort by:'|t}
+  {if="!$_GET['sort']"}
+    <strong>{'Cloud'|t}</strong>
+  {else}
+    <a href="?do=tagcloud">{'Cloud'|t}</a>
+  {/if}
+  &middot;
+  {if="$_GET['sort']==='usage'"}
+    <strong>{'Most used'|t}</strong>
+  {else}
+    <a href="?do=taglist&sort=usage">{'Most used'|t}</a>
+  {/if}
+  &middot;
+  {if="$_GET['sort']==='alpha'"}
+    <strong>{'Alphabetical'|t}</strong>
+  {else}
+    <a href="?do=taglist&sort=alpha">{'Alphabetical'|t}</a>
+  {/if}
+</p>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<h2>{'Tag list'|t} <span class="badge badge-secondary">{function="count($tags)"}</span></h2>
+
+{if="!empty($search_tags)"}
+  <p>
+    <a href="?searchtags={$search_tags|urlencode}"
+       class="btn btn-outline-primary"
+    >
+      {'List all links with those tags'|t}
+    </a>
+  </p>
+{/if}
+
+<div id="plugin_zone_start_tagcloud">
+  {loop="$plugin_start_zone"}
+    {$value}
+  {/loop}
+</div>
+
+<ol id="taglist" class="my-4">
+  {loop="tags"}
+    <li>
+      <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
+         class="tag-link"
+      >{$key}</a>
+      <a href="?addtag={$key|urlencode}"
+         title="{'Filter by tag'|t}"
+         class="badge badge-secondary"
+      >{$value}</a>
+
+      {loop="$value.tag_plugin"}
+        {$value}
+      {/loop}
+    </li>
+  {/loop}
+</ol>
+
+<div id="plugin_zone_end_tagcloud">
+  {loop="$plugin_end_zone"}
+    {$value}
+  {/loop}
+</div>
+
+{include="tag.sort"}
+
+{include="page.footer"}
+</body>
+</html>
+

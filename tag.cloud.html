@@ -6,7 +6,7 @@
 <body class="text-light bg-dark">
 {include="page.header"}
 
-<h2>{'Tags'|t} <span class="badge badge-secondary">{function="count($tags)"}</span></h2>
+<h2>{'Tag cloud'|t} <span class="badge badge-secondary">{function="count($tags)"}</span></h2>
 
 {if="!empty($search_tags)"}
   <p>
@@ -45,4 +45,3 @@
 {include="page.footer"}
 </body>
 </html>
-

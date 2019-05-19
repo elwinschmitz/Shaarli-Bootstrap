@@ -10,7 +10,9 @@
 
 {if="!empty($search_tags)"}
   <p>
-    <a href="?searchtags={$search_tags|urlencode}" class="pure-button pure-button-shaarli">
+    <a href="?searchtags={$search_tags|urlencode}"
+       class="btn btn-outline-primary"
+    >
       {'List all links with those tags'|t}
     </a>
   </p>

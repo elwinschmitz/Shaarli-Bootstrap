@@ -16,14 +16,14 @@
   </p>
 {/if}
 
+<div class="text-center">
+  <div id="plugin_zone_start_tagcloud">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
 
-<div id="plugin_zone_start_tagcloud">
-  {loop="$plugin_start_zone"}
-    {$value}
-  {/loop}
-</div>
-
-<div id="cloudtag" class="text-center">
+<p id="cloudtag">
   {loop="tags"}
     <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
        style="font-size:{$value.size}em"
@@ -33,12 +33,13 @@
       {$value}
     {/loop}
   {/loop}
-</div>
+</p>
 
-<div id="plugin_zone_end_tagcloud">
-  {loop="$plugin_end_zone"}
-    {$value}
-  {/loop}
+  <div id="plugin_zone_end_tagcloud">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
 </div>
 
 {include="page.footer"}

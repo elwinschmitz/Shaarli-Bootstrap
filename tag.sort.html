@@ -1,3 +1,30 @@
+{if="!empty($search_tags)"}
+  <div class="alert alert-dark">
+    <p class="mb-0">
+      <a href="?searchtags={$search_tags|urlencode}"
+         class="btn btn-sm btn-outline-primary"
+      >
+        {'List all'|t}
+      </a>
+      &middot;
+      {$exploded_tags=explode(' ', $search_tags)}
+      {loop="$exploded_tags"}
+          <span class="badge badge-secondary">
+            {$value}
+            &nbsp;
+            <a href="?removetag={$value|urlencode}"
+               title="{'Remove tag'|t}"
+               class="text-reset"
+            >
+              <span class="sr-only">{'Remove tag'|t}</span>
+              <span aria-hidden="true">&times;</span>
+            </a>
+          </span>&nbsp;
+      {/loop}
+    </p>
+  </div>
+{/if}
+
 {$isCloud=(!$_GET['sort']) ? ' ' : ''}
 {$isUsage=($_GET['sort']==='usage') ? ' ' : ''}
 {$isAlpha=($_GET['sort']==='alpha') ? ' ' : ''}

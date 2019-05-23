@@ -6,17 +6,7 @@
 <body class="text-light bg-dark">
 {include="page.header"}
 
-<h2>{'Tag cloud'|t} <span class="badge badge-secondary">{function="count($tags)"}</span></h2>
-
-{if="!empty($search_tags)"}
-  <p>
-    <a href="?searchtags={$search_tags|urlencode}"
-       class="btn btn-outline-primary"
-    >
-      {'List all links with those tags'|t}
-    </a>
-  </p>
-{/if}
+<h2>{'Tag cloud'|t}</h2>
 
 <div class="my-4">
   {include="tag.sort"}

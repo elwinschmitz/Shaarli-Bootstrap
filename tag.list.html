@@ -18,37 +18,41 @@
   </p>
 {/if}
 
-<div id="plugin_zone_start_tagcloud">
-  {loop="$plugin_start_zone"}
-    {$value}
-  {/loop}
+<div class="my-4">
+  {include="tag.sort"}
 </div>
 
-<ol id="taglist" class="my-4">
-  {loop="tags"}
-    <li>
-      <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
-         class="tag-link"
-      >{$key}</a>
-      <a href="?addtag={$key|urlencode}"
-         title="{'Filter by tag'|t}"
-         class="badge badge-secondary"
-      >{$value}</a>
+<div class="my-4">
+  <div id="plugin_zone_start_tagcloud">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
 
-      {loop="$value.tag_plugin"}
-        {$value}
-      {/loop}
-    </li>
-  {/loop}
-</ol>
+  <ol id="taglist">
+    {loop="tags"}
+      <li>
+        <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
+          class="tag-link"
+        >{$key}</a>
+        <a href="?addtag={$key|urlencode}"
+          title="{'Filter by tag'|t}"
+          class="badge badge-secondary"
+        >{$value}</a>
 
-<div id="plugin_zone_end_tagcloud">
-  {loop="$plugin_end_zone"}
-    {$value}
-  {/loop}
+        {loop="$value.tag_plugin"}
+          {$value}
+        {/loop}
+      </li>
+    {/loop}
+  </ol>
+
+  <div id="plugin_zone_end_tagcloud">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
 </div>
-
-{include="tag.sort"}
 
 {include="page.footer"}
 </body>

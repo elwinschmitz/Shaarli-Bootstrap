@@ -18,31 +18,35 @@
   </p>
 {/if}
 
-<div id="plugin_zone_start_tagcloud">
-  {loop="$plugin_start_zone"}
-    {$value}
-  {/loop}
+<div class="my-4">
+  {include="tag.sort"}
 </div>
 
-<p id="cloudtag" class="my-4">
-  {loop="tags"}
-    <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
-       style="font-size:{$value.size}em"
-    >{$key}</a>
-
-    {loop="$value.tag_plugin"}
+<div class="my-4">
+  <div id="plugin_zone_start_tagcloud">
+    {loop="$plugin_start_zone"}
       {$value}
     {/loop}
-  {/loop}
-</p>
+  </div>
 
-<div id="plugin_zone_end_tagcloud">
-  {loop="$plugin_end_zone"}
-    {$value}
-  {/loop}
+  <p id="cloudtag">
+    {loop="tags"}
+      <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+        style="font-size:{$value.size}em"
+      >{$key}</a>
+
+      {loop="$value.tag_plugin"}
+        {$value}
+      {/loop}
+    {/loop}
+  </p>
+
+  <div id="plugin_zone_end_tagcloud">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
 </div>
-
-{include="tag.sort"}
 
 {include="page.footer"}
 </body>

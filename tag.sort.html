@@ -34,12 +34,12 @@
    aria-label="{'Sort by:'|t}"
 >
   <a href="?do=tagcloud{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
-     class="btn btn-outline-secondary {if="$isCloud"} active {/if}"
+     class="btn btn-outline-secondary {$isCloud ? 'active' : ''}"
   >{'Cloud'|t}</a>
   <a href="?do=taglist&sort=usage{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
-     class="btn btn-outline-secondary {if="$isUsage"} active {/if}"
+     class="btn btn-outline-secondary {$isUsage ? 'active' : ''}"
   >{'Most used'|t}</a>
   <a href="?do=taglist&sort=alpha{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
-     class="btn btn-outline-secondary {if="$isAlpha"} active {/if}"
+     class="btn btn-outline-secondary {$isAlpha ? 'active' : ''}"
   >{'Alphabetical'|t}</a>
 </p>

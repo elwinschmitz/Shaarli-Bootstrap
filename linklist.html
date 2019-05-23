@@ -173,13 +173,13 @@
        aria-label="{'Filter by:'|t}"
     >
       <a href="?visibility=public"
-         class="btn btn-outline-secondary {if="$onlyPublic"} active {/if}"
+         class="btn btn-outline-secondary {$onlyPublic ? 'active' : ''}"
       >{'Public'|t}</a>
       <a href="?visibility=private"
-         class="btn btn-outline-secondary {if="$onlyPrivate"} active {/if}"
+         class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
       >{'Private'|t}</a>
       <a href="?untaggedonly"
-         class="btn btn-outline-secondary {if="$onlyUntagged"} active {/if}"
+         class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
       >{'Untagged'|t}</a>
     </p>
   </div>

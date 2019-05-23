@@ -12,7 +12,7 @@
   </a>
   <ul class="navbar-nav ml-auto">
     {if="$is_logged_in || $openshaarli"}
-      <li class="nav-item {if="$doAdd"} active {/if}">
+      <li class="nav-item {$doAdd ? 'active' : ''}">
         <a href="?do=addlink"
            class="nav-link"
            title="{'Add'|t}"
@@ -21,7 +21,7 @@
         >✚</a>
       </li>
     {/if}
-    <li class="nav-item {if="$doTags"} active {/if}">
+    <li class="nav-item {$doTags ? 'active' : ''}">
       <a href="?do=tagcloud"
         class="nav-link"
         title="{'Tags'|t}"
@@ -37,7 +37,7 @@
       >?</a>
     </li>
     {if="$is_logged_in"}
-      <li class="nav-item {if="$doTools"} active {/if}">
+      <li class="nav-item {$doTools ? 'active' : ''}">
         <a href="?do=tools"
            class="nav-link"
            {if="$doTools"} aria-current="true" {/if}
@@ -46,7 +46,7 @@
         </a>
       </li>
     {else}
-      <li class="nav-item {if="$doLogin"} active {/if}">
+      <li class="nav-item {$doLogin ? 'active' : ''}">
         <a href="?do=login"
            class="nav-link"
            {if="$doLogin"} aria-current="page" {/if}

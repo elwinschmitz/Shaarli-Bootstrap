@@ -1,11 +1,18 @@
-<p class="btn-group" role="group" aria-label="{'Sort by:'|t}">
+{$isCloud=(!$_GET['sort']) ? ' ' : ''}
+{$isUsage=($_GET['sort']==='usage') ? ' ' : ''}
+{$isAlpha=($_GET['sort']==='alpha') ? ' ' : ''}
+
+<p class="btn-group m-0"
+   role="group"
+   aria-label="{'Sort by:'|t}"
+>
   <a href="?do=tagcloud"
-      class="btn btn-outline-secondary {if="!$_GET['sort']"} active {/if}"
+     class="btn btn-outline-secondary {if="$isCloud"} active {/if}"
   >{'Cloud'|t}</a>
   <a href="?do=taglist&sort=usage"
-      class="btn btn-outline-secondary {if="$_GET['sort']==='usage'"} active {/if}"
+     class="btn btn-outline-secondary {if="$isUsage"} active {/if}"
   >{'Most used'|t}</a>
   <a href="?do=taglist&sort=alpha"
-      class="btn btn-outline-secondary {if="$_GET['sort']==='alpha'"} active {/if}"
+     class="btn btn-outline-secondary {if="$isAlpha"} active {/if}"
   >{'Alphabetical'|t}</a>
 </p>

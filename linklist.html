@@ -65,6 +65,9 @@
   <ol id="linklist-loop" class="list-unstyled">
     {ignore}Set translation here, for performance{/ignore}
       {$strPrivate=t('Private')}
+      {$strSticky=t('Pinned')}
+      {$strPin=t('Pin')}
+      {$strUnpin=t('Unpin')}
       {$strAddTag=t('Filter on tag')}
       {$strEdit=t('Edit')}
       {$strPermalink=t('Permalink')}
@@ -79,6 +82,11 @@
         {/if}
 
         <h2 class="h4 text-break">
+          {if="$value.sticky"}
+            <small class="badge badge-warning badge-pill"
+                   title="{$strSticky}"
+            >!</small>
+          {/if}
           <a href="{$value.real_url}" title="{$value.real_url}">{$value.title}</a>
         </h2>
         <p>
@@ -127,6 +135,10 @@
               {$strEdit}
             </a>
           {/if}
+          <a href="?do=pin&id={$value.id}&token={$token}"
+             title="{$value.sticky ? $strUnpin : $strPin }"
+             class="btn btn-link btn-sm {$value.sticky ? 'text-white' : 'text-white-50' }"
+          >!</a>
           <span class="ml-auto">
             <a href="https://web.archive.org/web/*/{$value.real_url}"
                class="btn btn-link btn-sm"

@@ -45,10 +45,18 @@
           {/loop}
         {/if}
         {if="!empty($visibility)"}
-          {'with status'|t} {$visibility|t}
+          {'with status'|t} {$visibility}.
+
+          <a href="?visibility={$visibility}"
+             class="btn btn-sm btn-outline-primary"
+          >{'Show all'|t}</a>
         {/if}
         {if="$untaggedonly"}
-          {'without any tag'|t}
+          {'without any tag'|t}.
+
+          <a href="?untaggedonly"
+             class="btn btn-sm btn-outline-primary"
+          >{'Show all'|t}</a>
         {/if}
       </p>
     </div>
@@ -146,13 +154,35 @@
   </div>
 
 {if="!empty($linkcount)"}
-  <p class="my-2 text-center">
+  <p class="my-3 text-center">
     <strong>{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
     {if="$privateLinkcount > 0"}
       &middot;
       <strong>{$privateLinkcount}</strong> {function="t('private url', 'private urls', $privateLinkcount)"}
     {/if}
   </p>
+{/if}
+{if="!empty($tags)"}
+  <div class="my-2 text-center">
+    {$onlyPublic=($visibility==='public') ? ' ' : ''}
+    {$onlyPrivate=($visibility==='private') ? ' ' : ''}
+    {$onlyUntagged=($untaggedonly) ? ' ' : ''}
+
+    <p class="btn-group my-0"
+       role="group"
+       aria-label="{'Filter by:'|t}"
+    >
+      <a href="?visibility=public"
+         class="btn btn-outline-secondary {if="$onlyPublic"} active {/if}"
+      >{'Public'|t}</a>
+      <a href="?visibility=private"
+         class="btn btn-outline-secondary {if="$onlyPrivate"} active {/if}"
+      >{'Private'|t}</a>
+      <a href="?untaggedonly"
+         class="btn btn-outline-secondary {if="$onlyUntagged"} active {/if}"
+      >{'Untagged'|t}</a>
+    </p>
+  </div>
 {/if}
 
 

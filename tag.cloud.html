@@ -31,9 +31,13 @@
 
   <p id="cloudtag">
     {loop="tags"}
-      <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
-        style="font-size:{$value.size}em"
+      <a href="?addtag={$key|urlencode}"
+         title="{'Filter by tag'|t}"
+         style="font-size:{$value.size}em"
       >{$key}</a>
+      <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+         class="badge badge-secondary"
+      >{$value.count}</a>
 
       {loop="$value.tag_plugin"}
         {$value}

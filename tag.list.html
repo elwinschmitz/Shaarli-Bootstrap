@@ -32,12 +32,11 @@
   <ol id="taglist">
     {loop="tags"}
       <li>
-        <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
-          class="tag-link"
-        >{$key}</a>
         <a href="?addtag={$key|urlencode}"
-          title="{'Filter by tag'|t}"
-          class="badge badge-secondary"
+           title="{'Filter by tag'|t}"
+        >{$key}</a>
+        <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
+           class="badge badge-secondary"
         >{$value}</a>
 
         {loop="$value.tag_plugin"}

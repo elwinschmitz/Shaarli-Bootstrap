@@ -25,7 +25,7 @@
         <a href="?addtag={$key|urlencode}"
            title="{'Filter by tag'|t}"
         >{$key}</a>
-        <a href="?searchtags={$key|urlencode} {$search_tags|urlencode}"
+        <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
            class="badge badge-secondary"
         >{$value}</a>
 

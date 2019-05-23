@@ -34,7 +34,7 @@
               <span class="badge badge-secondary">
                 {$value}
                 &nbsp;
-                <a href="?removetag={function="urlencode($value)"}"
+                <a href="?removetag={$value|urlencode}"
                    title="{'Remove tag'|t}"
                    class="text-reset"
                 >

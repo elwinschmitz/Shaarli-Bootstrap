@@ -6,13 +6,13 @@
    role="group"
    aria-label="{'Sort by:'|t}"
 >
-  <a href="?do=tagcloud"
+  <a href="?do=tagcloud{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
      class="btn btn-outline-secondary {if="$isCloud"} active {/if}"
   >{'Cloud'|t}</a>
-  <a href="?do=taglist&sort=usage"
+  <a href="?do=taglist&sort=usage{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
      class="btn btn-outline-secondary {if="$isUsage"} active {/if}"
   >{'Most used'|t}</a>
-  <a href="?do=taglist&sort=alpha"
+  <a href="?do=taglist&sort=alpha{if="!empty($search_tags)"}&searchtags={$search_tags|urlencode}{/if}"
      class="btn btn-outline-secondary {if="$isAlpha"} active {/if}"
   >{'Alphabetical'|t}</a>
 </p>

@@ -134,11 +134,11 @@
             >
               {$strEdit}
             </a>
+            <a href="?do=pin&id={$value.id}&token={$token}"
+               title="{$value.sticky ? $strUnpin : $strPin }"
+               class="btn btn-link btn-sm {$value.sticky ? 'text-white' : 'text-white-50' }"
+            >!</a>
           {/if}
-          <a href="?do=pin&id={$value.id}&token={$token}"
-             title="{$value.sticky ? $strUnpin : $strPin }"
-             class="btn btn-link btn-sm {$value.sticky ? 'text-white' : 'text-white-50' }"
-          >!</a>
           <span class="ml-auto">
             <a href="https://web.archive.org/web/*/{$value.real_url}"
                class="btn btn-link btn-sm"

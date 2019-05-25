@@ -187,13 +187,16 @@
     >
       {if="$is_logged_in"}
         <a href="?visibility=public"
+           title="{'Only display public links'|t}"
            class="btn btn-outline-secondary {$onlyPublic ? 'active' : ''}"
         >{'Public'|t}</a>
         <a href="?visibility=private"
+           title="{'Only display private links'|t}"
            class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
         >{'Private'|t}</a>
       {/if}
       <a href="?untaggedonly"
+         title="{'Only display untagged links'|t}"
          class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
       >{'Untagged'|t}</a>
     </p>

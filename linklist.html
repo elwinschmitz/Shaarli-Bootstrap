@@ -169,13 +169,6 @@
 </div>
 
 {if="!empty($linkcount)"}
-  <p class="my-3 text-center">
-    <strong>{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
-    {if="$privateLinkcount > 0"}
-      &middot;
-      <strong>{$privateLinkcount}</strong> {function="t('private url', 'private urls', $privateLinkcount)"}
-    {/if}
-  </p>
   <div class="my-2 text-center">
     {$onlyPublic=($visibility==='public') ? ' ' : ''}
     {$onlyPrivate=($visibility==='private') ? ' ' : ''}
@@ -201,6 +194,13 @@
       >{'Untagged'|t}</a>
     </p>
   </div>
+  <p class="my-3 text-center">
+    <strong>{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
+    {if="$privateLinkcount > 0"}
+      &middot;
+      <strong>{$privateLinkcount}</strong> {function="t('private url', 'private urls', $privateLinkcount)"}
+    {/if}
+  </p>
 {/if}
 
 

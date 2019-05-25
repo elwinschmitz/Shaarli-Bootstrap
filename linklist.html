@@ -185,12 +185,14 @@
         role="group"
         aria-label="{'Filter by:'|t}"
     >
-      <a href="?visibility=public"
-         class="btn btn-outline-secondary {$onlyPublic ? 'active' : ''}"
-      >{'Public'|t}</a>
-      <a href="?visibility=private"
-         class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
-      >{'Private'|t}</a>
+      {if="$is_logged_in"}
+        <a href="?visibility=public"
+           class="btn btn-outline-secondary {$onlyPublic ? 'active' : ''}"
+        >{'Public'|t}</a>
+        <a href="?visibility=private"
+           class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
+        >{'Private'|t}</a>
+      {/if}
       <a href="?untaggedonly"
          class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
       >{'Untagged'|t}</a>

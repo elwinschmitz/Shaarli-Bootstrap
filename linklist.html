@@ -176,8 +176,6 @@
       <strong>{$privateLinkcount}</strong> {function="t('private url', 'private urls', $privateLinkcount)"}
     {/if}
   </p>
-{/if}
-{if="!empty($tags)"}
   <div class="my-2 text-center">
     {$onlyPublic=($visibility==='public') ? ' ' : ''}
     {$onlyPrivate=($visibility==='private') ? ' ' : ''}

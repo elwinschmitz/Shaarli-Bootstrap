@@ -157,13 +157,16 @@
       </li>
     {/loop}
   </ol>
-</div>
 
   <div id="plugin_zone_end_linklist">
     {loop="$plugin_end_zone"}
       {$value}
     {/loop}
   </div>
+
+  {include="linklist.paging"}
+
+</div>
 
 {if="!empty($linkcount)"}
   <p class="my-3 text-center">

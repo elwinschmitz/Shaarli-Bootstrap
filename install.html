@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+
+<div class="container-fluid">
+
+  <form method="POST"
+        name="installform"
+        id="installform"
+        class="my-5 pb-3"
+  >
+    <h2>{'Install Shaarli'|t}</h2>
+
+    <p>
+      {'It looks like it\'s the first time you run Shaarli. Please configure it.'|t}
+    </p>
+
+    <fieldset class="my-4 pb-3 border-bottom border-secondary">
+      <p class="form-group">
+        <label for="username">{'Username'|t}</label>
+        <input type="text"
+              name="setlogin"
+              id="username"
+              {if="!empty($username)"}value="{$username}"{/if}
+              autocomplete="username"
+              autocapitalize="none"
+              autocorrect="on"
+              autofocus
+              class="form-control"
+        />
+      </p>
+      <p class="form-group">
+        <label for="password">{'Password'|t}</label>
+        <input type="password"
+              name="setpassword"
+              id="password"
+              autocomplete="new-password"
+              class="form-control"
+        />
+      </p>
+    </fieldset>
+    <fieldset class="my-4  pb-3 border-bottom border-secondary">
+      <p class="form-group">
+        <label for="title">
+          {'Shaarli title'|t}
+        </label>
+        <input type="text"
+              name="title"
+              id="title"
+              size="50"
+              value="{$title}"
+              class="form-control"
+              placeholder="{'My links'|t}"
+        />
+      </p>
+      <p class="form-group">
+        <label for="language">
+          {'Language'|t}
+        </label>
+        <select name="language"
+                id="language"
+                class="custom-select"
+        >
+          {loop="$languages"}
+            <option value="{$key}"
+                    {if="$key===$language"} selected {/if}
+            >
+              {$value}
+            </option>
+          {/loop}
+        </select>
+      </p>
+
+      <p class="mb-1">
+        <label for="continent">
+          {'Timezone'|t}
+        </label>
+      </p>
+      <fieldset class="form-group form-inline">
+        <span class="mb-1 mb-sm-0 mr-1">
+          <label for="continent"
+                class="justify-content-start"
+          >
+            {'Continent'|t}
+          </label>
+
+          <select name="continent"
+                  id="continent"
+                  class="custom-select"
+          >
+            {loop="$continents"}
+              {if="$key !== 'selected'"}
+                <option value="{$value}"
+                        {if="$continents.selected === $value"} selected {/if}
+                >
+                  {$value}
+                </option>
+              {/if}
+            {/loop}
+          </select>
+        </span>
+        <span class="mb-1 mb-sm-0 ">
+          <label for="city"
+                class="justify-content-start"
+          >
+            {'City'|t}
+          </label>
+          <select id="city"
+                  name="city"
+                  class="custom-select"
+          >
+            {loop="$cities"}
+              {if="$key !== 'selected'"}
+                <option value="{$value.city}"
+                        {if="$cities.selected === $value.city"} selected {/if}
+                >
+                  {function="str_replace('_', ' ', $value.city)"}
+                </option>
+              {/if}
+            {/loop}
+          </select>
+        </span>
+      </fieldset>
+    </fieldset>
+    <fieldset class="my-4">
+      <p class="form-check">
+        <input type="checkbox"
+              name="enableApi"
+              id="enableApi"
+              {if="$api_enabled"} checked {/if}
+              class="form-check-input"
+        />
+        <label for="enableApi"
+              class="form-check-label"
+        >
+          {'Enable REST API'|t}
+        </label>
+        <small class="form-text text-muted">
+          {'Allow third party software to use Shaarli such as mobile applications'|t}
+        </small>
+      </p>
+      <p class="form-check">
+        <input type="checkbox"
+              name="updateCheck"
+              id="updateCheck"
+              {if="$enable_update_check"} checked {/if}
+              class="form-check-input"
+        />
+        <label for="updateCheck"
+              class="form-check-label"
+        >
+          {'Check updates'|t}
+        </label>
+        <small class="form-text text-muted">
+          {'Notify me when a new release is ready'|t}
+        </small>
+      </p>
+    </fieldset>
+
+    <p>
+      <button type="submit"
+              name="Save"
+              class="btn btn-primary"
+      >
+        {'Install'|t}
+      </button>
+    </p>
+  </form>
+
+  <footer id="footer" class="text-center">
+    <p class="text-muted">
+      <strong><a href="https://github.com/shaarli/Shaarli" class="text-muted">Shaarli</a></strong>
+      {$version}
+      &middot;
+      {'The personal, minimalist, super-fast, database free, bookmarking service'|t} {'by the Shaarli community'|t}
+      &middot;
+      <a href="doc/html/index.html" rel="nofollow" class="text-muted">
+        {'Documentation'|t}
+      </a>
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -16,9 +16,6 @@
     {if="isset($link.id)"}
       <input type="hidden" name="lf_id" value="{$link.id}" />
     {/if}
-    {if="isset($link.sticky)"}
-      <input type="hidden" name="lf_sticky" value="{$link.sticky}" />
-    {/if}
 
     <h2>
       {if="!$link_is_new"}{'Edit url'|t}{else}{'New url'|t}{/if}
@@ -81,6 +78,20 @@
         <label for="lf_private"
                class="custom-control-label text-warning"
         >{'Private'|t}</label>
+      </div>
+    </p>
+
+    <p class="form-group">
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox"
+               name="lf_sticky"
+               id="lf_sticky"
+               {if="$link.sticky"}checked{/if}
+               class="custom-control-input"
+        />
+        <label for="lf_sticky"
+               class="custom-control-label text-warning"
+        >{'Sticky'|t}</label>
       </div>
     </p>
 

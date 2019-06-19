@@ -3,11 +3,16 @@
   "version": "0.0.1",
   "description": "A Shaarli theme build with Bootstrap (only)",
   "scripts": {
+    "develop": "livereload . --exts 'html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Elwin Schmitz <ik@elwin.nu>",
   "license": "GPL-3.0",
+  "repository": {},
   "dependencies": {
     "bootstrap": "^4.3.1"
+  },
+  "devDependencies": {
+    "livereload": "^0.8.0"
   }
 }

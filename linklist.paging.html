@@ -14,8 +14,10 @@
   </div>
 {/if}
 
-<nav aria-label="{'Pagination'|t}">
-  <ul class="pagination justify-content-center">
+<nav aria-label="{'Pagination'|t}"
+     class="my-3 d-flex justify-content-center"
+>
+  <ul class="pagination mb-0">
     {if="$next_page_url"}
       <li class="page-item">
         <a href="{$next_page_url}"
@@ -58,4 +60,21 @@
       </li>
     {/if}
   </ul>
+
+  &nbsp;
+
+  <form method="GET" class="form-inline">
+    <label for="linksperpage"
+           class="sr-only"
+    >{'Links per page'|t}</label>
+    <input type="text"
+           name="linksperpage"
+           id="linksperpage"
+           value="{$links|count}"
+           size="2"
+           title="{'Links per page'|t}"
+           class="form-control text-center"
+    />
+  </form>
+
 </nav>

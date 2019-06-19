@@ -1,5 +1,5 @@
 
-<div class="my-5">
+<div class="mt-5">
 
   {ignore}<!-- defined here globally, also used by other forms -->{/ignore}
   {if="!empty($tags)"}
@@ -46,6 +46,14 @@
     </div>
   </form>
 </div>
+
+<p class="my-4 text-center">
+  <a href="?do={$feed_type}{$searchcrits}"
+     class="btn btn-sm btn-outline-secondary"
+  >
+    {'RSS Feed'|t}
+  </a>
+</p>
 
 
 <footer id="footer" class="text-center">

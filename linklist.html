@@ -118,7 +118,7 @@
             </p>
         {/if}
 
-        <p class="text-muted d-flex">
+        <div class="mb-3 text-muted d-flex">
           {$last_modified_date=$value.updated_timestamp ? format_date($value.updated) : format_date($value.created)}
           <a href="?{$value.shorturl}"
              title="{$last_modified_date}"
@@ -153,7 +153,7 @@
               {/loop}
             {/if}
           </span>
-        </p>
+        </div>
       </li>
     {/loop}
   </ol>

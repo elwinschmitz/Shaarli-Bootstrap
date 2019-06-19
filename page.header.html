@@ -4,6 +4,7 @@
   {/ignore}
   {$doAdd=($_GET['do'] === 'addlink') ? ' ' : ''}
   {$doTags=($_GET['do'] === 'tagcloud') ? ' ' : ''}
+  {$doPictures=($_GET['do'] === 'picwall') ? ' ' : ''}
   {$doTools=(in_array($_GET['do'], ['tools','configure','changepasswd','changetag','import','export'], true)) ? ' ' : ''}
   {$doLogin=($_GET['do'] === 'login') ? ' ' : ''}
 
@@ -55,13 +56,23 @@
         </a>
       </li>
     {/if}
-    {if="count($plugins_header.buttons_toolbar)>0"}
+    {if="count($plugins_header.buttons_toolbar)>0 || $thumbnails_enabled"}
       <li class="nav-item dropdown">
         <details>
           <summary class="nav-link dropdown-toggle">
             &hellip;
           </summary>
           <div class="dropdown-menu dropdown-menu-right show">
+            {if="$thumbnails_enabled"}
+              <li class="nav-item {$doPictures ? 'active' : ''}">
+                <a href="?do=picwall{$searchcrits}"
+                   class="dropdown-item"
+                   {if="$doPictures"} aria-current="page" {/if}
+                >
+                  {'Pictures'|t}
+                </a>
+              </li>
+            {/if}
             {loop="$plugins_header.buttons_toolbar"}
               <a class="dropdown-item {$value.class}"
                  {loop="$value.attr"}

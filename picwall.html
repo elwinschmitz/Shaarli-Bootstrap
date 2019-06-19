@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+{if="!$thumbnails_enabled"}
+  <div class="alert alert-warning">
+    <p class="mb-0">
+      {'Picture wall unavailable (thumbnails are disabled).'|t}
+    </p>
+  </div>
+{else}
+  {if="count($linksToDisplay)===0 && $is_logged_in"}
+    <div class="alert alert-warning">
+      <p class="mb-0">
+        {'There is no cached thumbnail. Try to <a href="?do=thumbs_update">synchronize them</a>.'|t}
+      </p>
+    </div>
+  {/if}
+
+  <h2>{'Picture Wall'|t} - {$linksToDisplay|count} {'pics'|t}</h2>
+
+  <div id="plugin_zone_start_picwall">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
+
+  <ol id="picwall-container" class="list-unstyled card-columns">
+    {loop="$linksToDisplay"}
+      <li class="card text-dark">
+        <div class="row no-gutters">
+          <div class="col-4">
+            <a href="{$value.real_url}"
+               class="d-block"
+            >
+              <img alt=""
+                   src="{$value.thumbnail}"
+                   width="{$thumbnails_width}"
+                   height="{$thumbnails_height}"
+                   class="card-img"
+              />
+            </a>
+          </div>
+          <div class="col-8">
+            <div class="card-body">
+              <p class="card-text">
+                <a href="{$value.real_url}">
+                  {$value.title}
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        {if="$value.picwall_plugin"}
+          <div class="card-footer">
+            {loop="$value.picwall_plugin"}
+              {$value}
+            {/loop}
+          </div>
+        {/if}
+      </li>
+    {/loop}
+  </ol>
+
+  <div id="plugin_zone_end_picwall">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
+{/if}
+
+{include="page.footer"}
+
+</body>
+</html>
+

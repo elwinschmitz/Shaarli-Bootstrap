@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+{if="!$thumbnails_enabled"}
+  <div class="alert alert-warning">
+    <p class="mb-0">
+      {'Thumbnails are disabled.'|t}
+    </p>
+  </div>
+{else}
+  <h2>{'Thumbnails update'|t}</h2>
+
+  {loop="ids"}
+    <form method="POST" action="?do=ajax_thumb_update" class="my-3">
+      <button type="submit"
+              name="id"
+              value="{$value}"
+              class="btn btn-secondary"
+      >
+        {'Update thumbnail'|t} {$value}
+      </button>
+    </form>
+  {/loop}
+{/if}
+
+{include="page.footer"}
+
+</body>
+</html>

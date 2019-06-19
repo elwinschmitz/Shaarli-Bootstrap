@@ -16,6 +16,9 @@
     {if="isset($link.id)"}
       <input type="hidden" name="lf_id" value="{$link.id}" />
     {/if}
+    {if="isset($link.sticky)"}
+      <input type="hidden" name="lf_sticky" value="{$link.sticky}" />
+    {/if}
 
     <h2>
       {if="!$link_is_new"}{'Edit url'|t}{else}{'New url'|t}{/if}

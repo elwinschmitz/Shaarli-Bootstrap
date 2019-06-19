@@ -98,7 +98,16 @@
           </a>
         </p>
 
-        {if="$value.description"}
+        {if="strlen($value.description) > 42"}
+          <details class="my-3">
+            <summary class="text-white-50">
+              {'Description'|t}
+            </summary>
+            <p class="text-break">
+              {$value.description}
+            </p>
+          </details>
+        {else}
           <p class="text-break">
             {$value.description}
           </p>

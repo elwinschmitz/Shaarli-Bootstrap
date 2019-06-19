@@ -16,50 +16,50 @@
     <label for="selection_all">
       {'Selection'|t}
     </label>
-    <span class="form-check">
+    <span class="custom-control custom-radio">
       <input type="radio"
              name="selection"
              id="selection_all"
              value="all"
              checked
-             class="form-check-input"
+             class="custom-control-input"
       />
-      <label for="selection_all" class="form-check-label">
+      <label for="selection_all" class="custom-control-label">
         {'All'|t}
       </label>
     </span>
-    <span class="form-check">
+    <span class="custom-control custom-radio">
       <input type="radio"
              name="selection"
              id="selection_private"
              value="private"
              {if="$privateLinkcount === 0"} disabled {/if}
-             class="form-check-input"
+             class="custom-control-input"
       />
-      <label for="selection_private" class="form-check-label">
+      <label for="selection_private" class="custom-control-label">
         {'Only Private'|t}
       </label>
     </span>
-    <span class="form-check">
+    <span class="custom-control custom-radio">
       <input type="radio"
              name="selection"
              id="selection_public"
              value="public"
              {if="($linkcount - $privateLinkcount) < 1"} disabled {/if}
-             class="form-check-input"
+             class="custom-control-input"
       />
-      <label for="selection_public" class="form-check-label">
+      <label for="selection_public" class="custom-control-label">
         {'Only Public'|t}
       </label>
     </span>
   </p>
-  <p class="form-check">
+  <p class="custom-control custom-checkbox">
     <input type="checkbox"
            name="prepend_note_url"
            id="prepend_note_url"
-           class="form-check-input"
+           class="custom-control-input"
     />
-    <label for="prepend_note_url" class="form-check-label">
+    <label for="prepend_note_url" class="custom-control-label">
       {"Prepend note permalinks with this Shaarli instance's URL"|t}
     </label>
     <small class="form-text text-muted">

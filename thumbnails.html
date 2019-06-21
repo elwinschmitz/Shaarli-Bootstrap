@@ -15,14 +15,26 @@
 {else}
   <h2>{'Thumbnails update'|t}</h2>
 
+  <iframe src="about:blank"
+          name="ajax_thumb_update"
+          id="ajax_thumb_update"
+          width="100%"
+          height="100"
+          class="my-3 border border-warning rounded bg-light text-monospace"
+  ></iframe>
+
   {loop="ids"}
-    <form method="POST" action="?do=ajax_thumb_update" class="my-3">
+    <form method="POST"
+          action="?do=ajax_thumb_update"
+          target="ajax_thumb_update"
+          class="my-1 d-inline-block"
+    >
       <button type="submit"
               name="id"
               value="{$value}"
-              class="btn btn-secondary"
+              class="btn btn-outline-secondary"
       >
-        {'Update thumbnail'|t} {$value}
+        {'Update thumbnail'|t}: <var class="text-white-50">{$value}</var>
       </button>
     </form>
   {/loop}

@@ -21,7 +21,7 @@
     </div>
   {/if}
 
-  <h2>{'Picture Wall'|t} - {$linksToDisplay|count} {'pics'|t}</h2>
+  <h2>{'Picture Wall'|t} <span class="badge badge-secondary mx-2">{$linksToDisplay|count}</span></h2>
 
   <div id="plugin_zone_start_picwall">
     {loop="$plugin_start_zone"}

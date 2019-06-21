@@ -37,25 +37,6 @@
          class="nav-link"
       >?</a>
     </li>
-    {if="$is_logged_in"}
-      <li class="nav-item {$doTools ? 'active' : ''}">
-        <a href="?do=tools"
-           class="nav-link"
-           {if="$doTools"} aria-current="true" {/if}
-        >
-          {'Tools'|t}
-        </a>
-      </li>
-    {else}
-      <li class="nav-item {$doLogin ? 'active' : ''}">
-        <a href="?do=login"
-           class="nav-link"
-           {if="$doLogin"} aria-current="page" {/if}
-        >
-          {'Login'|t}
-        </a>
-      </li>
-    {/if}
     {if="count($plugins_header.buttons_toolbar)>0 || $thumbnails_enabled"}
       <li class="nav-item dropdown">
         <details>
@@ -63,15 +44,19 @@
             &hellip;
           </summary>
           <div class="dropdown-menu dropdown-menu-right show">
+            <a href="?do=tools"
+               class="dropdown-item {$doTools ? 'active' : ''}"
+               {if="$doTools"} aria-current="true" {/if}
+            >
+              {'Tools'|t}
+            </a>
             {if="$thumbnails_enabled"}
-              <li class="nav-item {$doPictures ? 'active' : ''}">
-                <a href="?do=picwall{$searchcrits}"
-                   class="dropdown-item"
-                   {if="$doPictures"} aria-current="page" {/if}
-                >
-                  {'Pictures'|t}
-                </a>
-              </li>
+              <a href="?do=picwall{$searchcrits}"
+                 class="dropdown-item {$doPictures ? 'active' : ''}"
+                 {if="$doPictures"} aria-current="page" {/if}
+              >
+                {'Pictures'|t}
+              </a>
             {/if}
             {loop="$plugins_header.buttons_toolbar"}
               <a class="dropdown-item {$value.class}"
@@ -84,6 +69,25 @@
             {/loop}
           </div>
         </details>
+      </li>
+    {elseif="$is_logged_in"}
+      <li class="nav-item {$doTools ? 'active' : ''}">
+        <a href="?do=tools"
+           class="nav-link"
+           {if="$doTools"} aria-current="true" {/if}
+        >
+          {'Tools'|t}
+        </a>
+      </li>
+    {/if}
+    {if="!$is_logged_in"}
+      <li class="nav-item {$doLogin ? 'active' : ''}">
+        <a href="?do=login"
+           class="nav-link"
+           {if="$doLogin"} aria-current="page" {/if}
+        >
+          {'Login'|t}
+        </a>
       </li>
     {/if}
   </ul>

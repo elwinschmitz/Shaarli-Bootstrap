@@ -29,34 +29,22 @@
     {/loop}
   </div>
 
-  <ol id="picwall-container" class="list-unstyled card-columns">
+  <ol id="picwall-container" class="list-unstyled">
     {loop="$linksToDisplay"}
-      <li class="card text-dark">
-        <div class="row no-gutters">
-          <div class="col-4">
-            <a href="{$value.real_url}"
-               class="d-block"
-            >
-              <img alt=""
-                   src="{$value.thumbnail}"
-                   width="{$thumbnails_width}"
-                   height="{$thumbnails_height}"
-                   class="card-img"
-              />
-            </a>
-          </div>
-          <div class="col-8">
-            <div class="card-body">
-              <p class="card-text">
-                <a href="{$value.real_url}">
-                  {$value.title}
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
+      <li class="card d-inline-block m-1">
+        <a href="{$value.real_url}"
+            class="d-block"
+            title="{$value.title}"
+        >
+          <img alt=""
+               src="{$value.thumbnail}"
+               width="{$thumbnails_width}"
+               height="{$thumbnails_height}"
+               class="card-img-top"
+          />
+        </a>
         {if="$value.picwall_plugin"}
-          <div class="card-footer">
+          <div class="card-footer text-muted">
             {loop="$value.picwall_plugin"}
               {$value}
             {/loop}

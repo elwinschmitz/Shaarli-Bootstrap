@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body class="text-light bg-dark">
+{include="page.header"}
+
+<h2>{'The Daily Shaarli'|t}</h2>
+<p class="text-white-50">
+  {'All links of one day in a single page.'|t}
+</p>
+
+<div class="my-3">
+  <div class="d-flex justify-content-between">
+    <h3>{function="format_date($dayDate, false)"}</h3>
+    <p class="btn-group m-0">
+      {if="$previousday"}
+        <a href="?do=daily&amp;day={$previousday}"
+           class="btn btn-outline-secondary"
+           title="{'Previous day'|t}"
+           aria-label="{'Previous day'|t}"
+        >
+          <strong aria-hidden="true">&LeftArrow;</strong>
+        </a>
+      {else}
+        <span class="btn btn-outline-secondary disabled">
+          <strong aria-hidden="true">&LeftArrow;</strong>
+        </span>
+      {/if}
+      {if="$nextday"}
+        <a href="?do=daily&amp;day={$nextday}"
+           class="btn btn-outline-secondary"
+           title="{'Next day'|t}"
+           aria-label="{'Next day'|t}"
+        >
+          <strong aria-hidden="true">&RightArrow;</strong>
+        </a>
+      {else}
+        <span class="btn btn-outline-secondary disabled">
+          <strong aria-hidden="true">&RightArrow;</strong>
+        </span>
+      {/if}
+      </p>
+  </div>
+  <div id="plugin_zone_about_daily">
+    {loop="$daily_about_plugin"}
+      {$value}
+    {/loop}
+  </div>
+</div>
+
+<div id="daily" class="border-top border-bottom py-3">
+  <div id="plugin_zone_start_daily">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
+
+  {if="$linksToDisplay"}
+    {loop="$cols"}
+      {if="isset($value[0])"}
+        {loop="value"}
+          {$link=$value}
+          <div class="card my-3">
+            <div class="card-header">
+              {if="$thumbnails_enabled && !empty($link.thumbnail)"}
+                <img alt=""
+                     src="{$link.thumbnail}"
+                     width="{$thumbnails_width}"
+                     height="{$thumbnails_height}"
+                     class="float-left mr-3"
+                />
+              {/if}
+              <a href="{$link.real_url}">{$link.title}</a>
+            </div>
+            <div class="card-body">
+              {if="$link.formatedDescription"}
+                <p class="card-text text-muted">
+                  {$link.formatedDescription}
+                </p>
+              {/if}
+              <p class="card-text text-dark">
+                <a href="?{$link.shorturl}"
+                   title="{'Permalink'|t}"
+                >
+                  &para;
+                </a>
+                &middot;
+                {if="$link.tags"}
+                  {loop="link.taglist"}
+                    <a href="?addtag={$value|urlencode}"
+                       rel="tag"
+                       title="{'Add tag'|t}"
+                       class="badge badge-secondary"
+                    >{$value}</a>
+                  {/loop}
+                {/if}
+              </p>
+              {if="$link.link_plugin"}
+                <div>
+                  {loop="$link.link_plugin"}
+                    {$value}
+                  {/loop}
+                </div>
+              {/if}
+            </div>
+          </div>
+        {/loop}
+      {/if}
+    {/loop}
+  {else}
+    <div class="alert alert-secondary">
+      <p class="m-0">
+        {'No articles on this day.'|t}
+      </p>
+    </div>
+  {/if}
+
+  <div id="plugin_zone_end_picwall">
+    {loop="$plugin_end_zone"}
+      {$value}
+    {/loop}
+  </div>
+</div>
+
+<p class="my-4 text-center">
+  <a href="?do=dailyrss"
+     title="{'1 RSS entry per day'|t}"
+     class="btn btn-sm btn-outline-secondary"
+  >
+    {'The Daily Shaarli'|t} {'RSS Feed'|t}
+  </a>
+</p>
+
+{include="page.footer"}
+</body>
+</html>
+

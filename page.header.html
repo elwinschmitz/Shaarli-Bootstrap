@@ -1,3 +1,5 @@
+{$daily_enabled=true}
+
 <nav class="navbar navbar-expand navbar-dark" role="navigation">
   {ignore}
     Fill the variables with an invisible 'truthy/falsey' value, to be able to use it later as a boolean:
@@ -5,6 +7,7 @@
   {$doAdd=($_GET['do'] === 'addlink') ? ' ' : ''}
   {$doTags=($_GET['do'] === 'tagcloud') ? ' ' : ''}
   {$doPictures=($_GET['do'] === 'picwall') ? ' ' : ''}
+  {$doDaily=($_GET['do'] === 'daily') ? ' ' : ''}
   {$doTools=(in_array($_GET['do'], ['tools','configure','changepasswd','changetag','import','export'], true)) ? ' ' : ''}
   {$doLogin=($_GET['do'] === 'login') ? ' ' : ''}
 
@@ -37,7 +40,7 @@
          class="nav-link"
       >?</a>
     </li>
-    {if="count($plugins_header.buttons_toolbar)>0 || $thumbnails_enabled"}
+    {if="count($plugins_header.buttons_toolbar)>0 || $thumbnails_enabled || $daily_enabled"}
       <li class="nav-item dropdown">
         <details>
           <summary class="nav-link dropdown-toggle">
@@ -56,6 +59,14 @@
                  {if="$doPictures"} aria-current="page" {/if}
               >
                 {'Pictures'|t}
+              </a>
+            {/if}
+            {if="$daily_enabled"}
+              <a href="?do=daily"
+                 class="dropdown-item {$doDaily ? 'active' : ''}"
+                 {if="$doDaily"} aria-current="page" {/if}
+              >
+                {'Daily'|t}
               </a>
             {/if}
             {loop="$plugins_header.buttons_toolbar"}

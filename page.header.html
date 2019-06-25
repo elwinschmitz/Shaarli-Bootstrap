@@ -47,12 +47,14 @@
             &hellip;
           </summary>
           <div class="dropdown-menu dropdown-menu-right show">
-            <a href="?do=tools"
-               class="dropdown-item {$doTools ? 'active' : ''}"
-               {if="$doTools"} aria-current="true" {/if}
-            >
-              {'Tools'|t}
-            </a>
+            {if="$is_logged_in"}
+              <a href="?do=tools"
+                class="dropdown-item {$doTools ? 'active' : ''}"
+                {if="$doTools"} aria-current="true" {/if}
+              >
+                {'Tools'|t}
+              </a>
+            {/if}
             {if="$thumbnails_enabled"}
               <a href="?do=picwall{$searchcrits}"
                  class="dropdown-item {$doPictures ? 'active' : ''}"
@@ -78,12 +80,14 @@
                 {$value.html}
               </a>
             {/loop}
-            <hr class="dropdown-divider"/>
-            <a href="?do=logout"
-               class="dropdown-item"
-            >
-                {'Logout'|t}
-            </a>
+            {if="$is_logged_in"}
+              <hr class="dropdown-divider"/>
+              <a href="?do=logout"
+                class="dropdown-item"
+              >
+                  {'Logout'|t}
+              </a>
+            {/if}
           </div>
         </details>
       </li>

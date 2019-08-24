@@ -24,7 +24,7 @@
       <span class="d-inline-block">
         <a href="?addtag={$key|urlencode}"
            title="{'Filter by tag'|t}"
-           style="font-size:{$value.size * 1.33}em"
+           style="font-size:{function="str_replace(',', '.', $value.size * 1.33)"}em"
         >{$key}</a>
         <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
            class="badge badge-dark text-white-50"

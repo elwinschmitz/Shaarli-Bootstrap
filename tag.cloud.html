@@ -19,19 +19,21 @@
     {/loop}
   </div>
 
-  <p id="cloudtag">
+  <p id="cloudtag" class="text-center" style="line-height: 1">
     {loop="tags"}
-      <a href="?addtag={$key|urlencode}"
-         title="{'Filter by tag'|t}"
-         style="font-size:{$value.size}em"
-      >{$key}</a>
-      <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
-         class="badge badge-secondary"
-      >{$value.count}</a>
+      <span class="d-inline-block">
+        <a href="?addtag={$key|urlencode}"
+           title="{'Filter by tag'|t}"
+           style="font-size:{$value.size * 1.33}em"
+        >{$key}</a>
+        <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+           class="badge badge-dark text-white-50"
+        >{$value.count}</a>
 
-      {loop="$value.tag_plugin"}
-        {$value}
-      {/loop}
+        {loop="$value.tag_plugin"}
+          {$value}
+        {/loop}
+      </span>
     {/loop}
   </p>
 

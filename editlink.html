@@ -57,14 +57,34 @@
 
     <p class="form-group">
       <label for="lf_tags">{'Tags'|t}</label>
-      <input type="text"
-             name="lf_tags"
-             id="lf_tags"
-             value="{$link.tags}"
-             class="form-control"
-             autocomplete="off"
-             {if="!empty($tags)"}list="tagsList"{/if}
-      />
+      {if="empty($tags)"}
+        <input type="text"
+               name="lf_tags"
+               id="lf_tags"
+               value="{$link.tags}"
+               class="form-control"
+               autocomplete="off"
+        />
+      {else}
+        <span class="form-row">
+          <span class="col-9">
+            <textarea name="lf_tags"
+                      id="lf_tags"
+                      class="form-control"
+            >{$link.tags}</textarea>
+          </span>
+          <span class="col-3">
+            <input type="text"
+                   name="lf_tags-options"
+                   id="lf_tags-options"
+                   value=""
+                   class="form-control"
+                   list="tagsList"
+                   onchange="form.lf_tags.value=value+' '+form.lf_tags.value;value='';"
+            />
+          </span>
+        </span>
+      {/if}
     </p>
 
     <p class="form-group">

@@ -124,10 +124,10 @@
               >{$value}</a>
               {if="$tag_counter - 1 != $counter"}&middot;{/if}
             {/loop}
-            </p>
+          </p>
         {/if}
 
-        <div class="mb-3 text-muted d-flex">
+        <div class="mb-3 text-muted d-flex d-print-none">
           {$last_modified_date=$value.updated_timestamp ? format_date($value.updated) : format_date($value.created)}
           <a href="?{$value.shorturl}"
              title="{$last_modified_date}"

@@ -14,7 +14,7 @@
 <div class="my-3">
   <div class="d-flex justify-content-between">
     <h3>{function="format_date($dayDate, false)"}</h3>
-    <p class="btn-group m-0">
+    <p class="btn-group m-0 d-print-none">
       {if="$previousday"}
         <a href="?do=daily&amp;day={$previousday}"
            class="btn btn-outline-secondary"
@@ -124,7 +124,7 @@
   </div>
 </div>
 
-<p class="my-4 text-center">
+<p class="my-4 text-center d-print-none">
   <a href="?do=dailyrss"
      title="{'1 RSS entry per day'|t}"
      class="btn btn-sm btn-outline-secondary"

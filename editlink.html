@@ -101,20 +101,6 @@
       </div>
     </p>
 
-    <p class="form-group">
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox"
-               name="lf_sticky"
-               id="lf_sticky"
-               {if="$link.sticky"}checked{/if}
-               class="custom-control-input"
-        />
-        <label for="lf_sticky"
-               class="custom-control-label text-warning"
-        >{'Sticky'|t}</label>
-      </div>
-    </p>
-
     <p id="editlink-plugins">
       {loop="$edit_link_plugin"}
         {$value}

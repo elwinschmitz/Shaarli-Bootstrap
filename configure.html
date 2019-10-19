@@ -160,6 +160,20 @@
       {'Do not show any links if the user is not logged in'|t}
     </small>
   </p>
+  <p class="custom-control custom-checkbox">
+    <input type="checkbox"
+           name="retrieveDescription"
+           id="retrieveDescription"
+           {if="$retrieve_description"} checked {/if}
+           class="custom-control-input"
+    />
+    <label for="retrieveDescription" class="custom-control-label">
+      {'Automatically retrieve description for new bookmarks'|t}
+    </label>
+    <small class="form-text text-muted">
+      {'Shaarli will try to retrieve the description from meta HTML headers'|t}
+    </small>
+  </p>
   <p class="form-group">
     <label for="enableThumbnails_none">
       {'Enable thumbnails'|t}

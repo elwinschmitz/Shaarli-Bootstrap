@@ -13,7 +13,12 @@
 
 <div class="my-3">
   <div class="d-flex justify-content-between">
-    <h3>{function="format_date($dayDate, false)"}</h3>
+    <h3>
+      {if="!empty($dayDesc)"}
+        {$dayDesc} -
+      {/if}
+      {function="format_date($dayDate, false)"}
+    </h3>
     <p class="btn-group m-0 d-print-none">
       {if="$previousday"}
         <a href="?do=daily&amp;day={$previousday}"

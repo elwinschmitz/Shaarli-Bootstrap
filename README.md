@@ -23,7 +23,14 @@ Shaarli-Bootstrap is tested with [Shaarli 0.10.3](https://github.com/shaarli/Sha
 5. Save, reload, enjoy.
 
 
-## Useful urls:
+## Releases
+See what's changed in every release in the [CHANGELOG](CHANGELOG.md).
+
+
+## Development
+If you would like to work on the theme and make changes, feel free! :)
+
+### Useful resources:
 - Shaarli Documentation:  
   <https://shaarli.readthedocs.io/>
 - RainTPL syntax:  

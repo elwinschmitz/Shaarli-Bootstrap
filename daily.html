@@ -88,6 +88,7 @@
               <p class="card-text text-dark">
                 <a href="?{$link.shorturl}"
                    title="{'Permalink'|t}"
+                   aria-label="{'Permalink'|t}"
                 >
                   &para;
                 </a>
@@ -97,6 +98,7 @@
                     <a href="?addtag={$value|urlencode}"
                        rel="tag"
                        title="{'Add tag'|t}"
+                       aria-label="{'Add tag'|t}"
                        class="badge badge-secondary"
                     >{$value}</a>
                   {/loop}

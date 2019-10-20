@@ -36,9 +36,9 @@
                 &nbsp;
                 <a href="?removetag={$value|urlencode}"
                    title="{'Remove tag'|t}"
+                   aria-label="{'Remove tag'|t}"
                    class="text-reset"
                 >
-                  <span class="sr-only">{'Remove tag'|t}</span>
                   <span aria-hidden="true">&times;</span>
                 </a>
               </span>
@@ -85,6 +85,7 @@
           {if="$value.sticky"}
             <small class="badge badge-warning badge-pill"
                    title="{$strSticky}"
+                   aria-label="{$strSticky}"
             >!</small>
           {/if}
           <a href="{$value.real_url}" title="{$value.real_url}">{$value.title}</a>
@@ -120,6 +121,7 @@
               <a href="?addtag={$value|urlencode}"
                  rel="tag"
                  title="{$strAddTag}"
+                 aria-label="{$strAddTag}"
                  class="badge badge-secondary text-dark"
               >{$value}</a>
               {if="$tag_counter - 1 != $counter"}&middot;{/if}
@@ -131,12 +133,11 @@
           {$last_modified_date=$value.updated_timestamp ? format_date($value.updated) : format_date($value.created)}
           <a href="?{$value.shorturl}"
              title="{$last_modified_date}"
+             aria-label="{$strPermalink} - {$last_modified_date}"
              rel="permalink"
              class="btn btn-link btn-sm"
           >
             &para;
-            <span class="sr-only">{$strPermalink}</span>
-            <span class="sr-only">{$last_modified_date}</span>
           </a>
           {if="$is_logged_in"}
             <a href="?edit_link={$value.id}"
@@ -146,6 +147,7 @@
             </a>
             <a href="?do=pin&id={$value.id}&token={$token}"
                title="{$value.sticky ? $strUnpin : $strPin }"
+               aria-label="{$value.sticky ? $strUnpin : $strPin }"
                class="btn btn-link btn-sm {$value.sticky ? 'text-white' : 'text-white-50' }"
             >!</a>
           {/if}
@@ -191,15 +193,18 @@
       {if="$is_logged_in"}
         <a href="?visibility=public"
            title="{'Only display public links'|t}"
+           aria-label="{'Only display public links'|t}"
            class="btn btn-outline-secondary {$onlyPublic ? 'active' : ''}"
         >{'Public'|t}</a>
         <a href="?visibility=private"
            title="{'Only display private links'|t}"
+           aria-label="{'Only display private links'|t}"
            class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
         >{'Private'|t}</a>
       {/if}
       <a href="?untaggedonly"
          title="{'Only display untagged links'|t}"
+         aria-label="{'Only display untagged links'|t}"
          class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
       >{'Untagged'|t}</a>
     </p>

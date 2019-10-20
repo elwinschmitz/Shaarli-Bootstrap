@@ -19,7 +19,10 @@
     {/loop}
   </div>
 
-  <p id="cloudtag" class="text-center" style="line-height: 1">
+  <p id="cloudtag"
+     class="text-center text-break"
+     style="line-height: 1"
+  >
     {loop="tags"}
       <span class="d-inline-block">
         <a href="?addtag={$key|urlencode}"

@@ -12,7 +12,8 @@ The layout is focused on 'mobile' only, for now. (But works just fine on bigger 
 
 
 ## Compatibility
-Shaarli-Bootstrap is tested with [Shaarli 0.10.3](https://github.com/shaarli/Shaarli/releases/tag/v0.10.3).
+Shaarli-Bootstrap is tested with [Shaarli 0.10.3](https://github.com/shaarli/Shaarli/releases/tag/v0.10.3) up to
+[Shaarli 0.11.1](https://github.com/shaarli/Shaarli/releases/tag/v0.11.1).
 
 
 ## Installation

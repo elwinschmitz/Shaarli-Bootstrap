@@ -38,7 +38,9 @@
             aria-label="{$value.title}"
         >
           <img alt=""
-               src="{$value.thumbnail}"
+               src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+               data-src="{$value.thumbnail}"
+               onload="this.src=this.dataset.src"
                width="{$thumbnails_width}"
                height="{$thumbnails_height}"
                class="card-img-top"

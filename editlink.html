@@ -64,6 +64,7 @@
                value="{$link.tags}"
                class="form-control"
                autocomplete="off"
+               autocapitalize="none"
         />
       {else}
         <span class="form-row">
@@ -80,6 +81,8 @@
                    value=""
                    class="form-control"
                    list="tagsList"
+                   autocomplete="off"
+                   autocapitalize="none"
                    onchange="form.lf_tags.value=value+' '+form.lf_tags.value;value='';"
             />
           </span>

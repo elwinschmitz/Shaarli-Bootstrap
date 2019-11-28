@@ -31,16 +31,16 @@
         <div class="input-group-text">#</div>
       </div>
       <input type="text"
-              id="tagfilter_value"
-              name="searchtags"
-              class="form-control"
-              placeholder="{'Filter by tag'|t}"
-              {if="!empty($search_tags)"}
-                value="{$search_tags}"
-              {/if}
-              autocomplete="off"
-              autocapitalize="none"
-              {if="!empty($tags)"}list="tagsList"{/if}
+             id="tagfilter_value"
+             name="searchtags"
+             class="form-control"
+             placeholder="{'Filter by tag'|t}"
+             {if="!empty($search_tags)"}
+               value="{$search_tags}"
+             {/if}
+             autocomplete="off"
+             autocapitalize="none"
+             {if="!empty($tags)"}list="tagsList"{/if}
       />
       <div class="input-group-append">
         <button type="submit" class="btn btn-outline-primary">{'Filter'|t}</button>

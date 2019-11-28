@@ -27,10 +27,10 @@
     {/if}
     <li class="nav-item {$doTags ? 'active' : ''}">
       <a href="?do=tagcloud"
-        class="nav-link"
-        title="{'Tags'|t}"
-        aria-label="{'Tags'|t}"
-        {if="$doTags"} aria-current="page" {/if}
+         class="nav-link"
+         title="{'Tags'|t}"
+         aria-label="{'Tags'|t}"
+         {if="$doTags"} aria-current="page" {/if}
       >#</a>
     </li>
     <li class="nav-item">
@@ -49,8 +49,8 @@
           <div class="dropdown-menu dropdown-menu-right show">
             {if="$is_logged_in"}
               <a href="?do=tools"
-                class="dropdown-item {$doTools ? 'active' : ''}"
-                {if="$doTools"} aria-current="true" {/if}
+                 class="dropdown-item {$doTools ? 'active' : ''}"
+                 {if="$doTools"} aria-current="true" {/if}
               >
                 {'Tools'|t}
               </a>
@@ -83,7 +83,7 @@
             {if="$is_logged_in"}
               <hr class="dropdown-divider"/>
               <a href="?do=logout"
-                class="dropdown-item"
+                 class="dropdown-item"
               >
                   {'Logout'|t}
               </a>

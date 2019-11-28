@@ -181,16 +181,16 @@
 </div>
 
 {if="!empty($linkcount)"}
-  <div class="my-3 text-center">
-    {$onlyPublic=($visibility==='public') ? ' ' : ''}
-    {$onlyPrivate=($visibility==='private') ? ' ' : ''}
-    {$onlyUntagged=($untaggedonly) ? ' ' : ''}
+  {if="$is_logged_in"}
+    <div class="my-3 text-center">
+      {$onlyPublic=($visibility==='public') ? ' ' : ''}
+      {$onlyPrivate=($visibility==='private') ? ' ' : ''}
+      {$onlyUntagged=($untaggedonly) ? ' ' : ''}
 
-    <p class="btn-group my-0"
-        role="group"
-        aria-label="{'Filter by:'|t}"
-    >
-      {if="$is_logged_in"}
+      <p class="btn-group my-0"
+         role="group"
+         aria-label="{'Filter by:'|t}"
+      >
         <a href="?visibility=public"
            title="{'Only display public links'|t}"
            aria-label="{'Only display public links'|t}"
@@ -201,14 +201,14 @@
            aria-label="{'Only display private links'|t}"
            class="btn btn-outline-secondary {$onlyPrivate ? 'active' : ''}"
         >{'Private'|t}</a>
-      {/if}
-      <a href="?untaggedonly"
-         title="{'Only display untagged links'|t}"
-         aria-label="{'Only display untagged links'|t}"
-         class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
-      >{'Untagged'|t}</a>
-    </p>
-  </div>
+        <a href="?untaggedonly"
+           title="{'Only display untagged links'|t}"
+           aria-label="{'Only display untagged links'|t}"
+           class="btn btn-outline-secondary {$onlyUntagged ? 'active' : ''}"
+        >{'Untagged'|t}</a>
+      </p>
+    </div>
+  {/if}
   <p class="my-3 text-center">
     <strong>{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
     {if="$privateLinkcount > 0"}

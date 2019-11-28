@@ -27,6 +27,8 @@
            aria-label="{'Filter by tag'|t}"
         >{$key}</a>
         <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+           title="{'List all'|t} {$value}"
+           aria-label="{'List all'|t} {$value}"
            class="badge badge-secondary"
         >{$value}</a>
 

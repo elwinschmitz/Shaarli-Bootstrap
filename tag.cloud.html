@@ -31,6 +31,8 @@
            style="font-size:{function="str_replace(',', '.', $value.size * 1.33)"}em"
         >{$key}</a>
         <a href="?searchtags={$key|urlencode}{if="!empty($search_tags)"}+{$search_tags|urlencode}{/if}"
+           title="{'List all'|t} {$value.count}"
+           aria-label="{'List all'|t} {$value.count}"
            class="badge badge-dark text-white-50"
         >{$value.count}</a>
 

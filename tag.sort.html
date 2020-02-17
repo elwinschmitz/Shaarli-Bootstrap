@@ -25,21 +25,31 @@
   </div>
 {/if}
 
-{$isCloud=(!$_GET['sort']) ? ' ' : ''}
+{$isCloud=($_GET['do']==='tagcloud') ? ' ' : ''}
+{$isList=($_GET['do']==='taglist') ? ' ' : ''}
 {$isUsage=($_GET['sort']==='usage') ? ' ' : ''}
 {$isAlpha=($_GET['sort']==='alpha') ? ' ' : ''}
 
-<p class="btn-group m-0"
+<p class="btn-group m-1"
    role="group"
-   aria-label="{'Sort by:'|t}"
+   aria-label="{'Show as:'|t}"
 >
   <a href="?do=tagcloud{$searchcrits}"
      class="btn btn-outline-secondary {$isCloud ? 'active' : ''}"
   >{'Cloud'|t}</a>
-  <a href="?do=taglist&sort=usage{$searchcrits}"
+  <a href="?do=taglist&sort={$_GET['sort']}{$searchcrits}"
+     class="btn btn-outline-secondary {$isList ? 'active' : ''}"
+  >{'List'|t}</a>
+</p>
+
+<p class="btn-group m-1"
+   role="group"
+   aria-label="{'Sort by:'|t}"
+>
+  <a href="?do={$_GET['do']}&sort=usage{$searchcrits}"
      class="btn btn-outline-secondary {$isUsage ? 'active' : ''}"
   >{'Most used'|t}</a>
-  <a href="?do=taglist&sort=alpha{$searchcrits}"
+  <a href="?do={$_GET['do']}&sort=alpha{$searchcrits}"
      class="btn btn-outline-secondary {$isAlpha ? 'active' : ''}"
   >{'Alphabetical'|t}</a>
 </p>

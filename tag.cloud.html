@@ -6,7 +6,7 @@
 <body class="text-light bg-dark">
 {include="page.header"}
 
-<h2>{'Tag cloud'|t}</h2>
+<h2>{'Tags'|t}</h2>
 
 <div class="my-4">
   {include="tag.sort"}
@@ -18,6 +18,12 @@
       {$value}
     {/loop}
   </div>
+
+  <!--
+    {if="$_GET['sort']==='usage'"}
+      {function="arsort($tags)"}
+    {/if}
+  -->
 
   <p id="cloudtag"
      class="text-center text-break"

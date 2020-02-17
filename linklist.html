@@ -99,7 +99,7 @@
           </a>
         </p>
 
-        {if="strlen($value.description) > 42"}
+        {if="(strlen($value.description) > 42) && count($links) > 1"}
           <details class="my-3">
             <summary class="text-white-50">
               {'Description'|t}

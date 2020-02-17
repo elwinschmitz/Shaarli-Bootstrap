@@ -176,7 +176,9 @@
     {/loop}
   </div>
 
-  {include="linklist.paging"}
+  {if="count($links)>1"}
+    {include="linklist.paging"}
+  {/if}
 
 </div>
 

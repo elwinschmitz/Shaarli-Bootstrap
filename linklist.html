@@ -6,7 +6,7 @@
 <body class="text-light bg-dark">
 {include="page.header"}
 
-<div id="linklist">
+<div id="linklist" class="mb-5">
   <div id="plugin_zone_start_linklist">
     {loop="$plugin_start_zone"}
       {$value}
@@ -211,6 +211,7 @@
       </p>
     </div>
   {/if}
+
   <p class="my-3 text-center">
     <strong>{$linkcount}</strong> {function="t('url', 'urls', $linkcount)"}
     {if="$privateLinkcount > 0"}

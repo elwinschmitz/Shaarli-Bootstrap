@@ -8,7 +8,14 @@
   },
   "author": "Elwin Schmitz <ik@elwin.nu>",
   "license": "GPL-3.0",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "github:elwinschmitz/Shaarli-Bootstrap"
+  },
+  "bugs": {
+    "url": "https://github.com/elwinschmitz/Shaarli-Bootstrap/issues"
+  },
+  "homepage": "https://github.com/elwinschmitz/Shaarli-Bootstrap#readme",
   "dependencies": {
     "bootstrap": "^4.4.1"
   },

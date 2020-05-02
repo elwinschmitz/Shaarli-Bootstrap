@@ -10,9 +10,9 @@
   "license": "GPL-3.0",
   "repository": {},
   "dependencies": {
-    "bootstrap": "^4.3.1"
+    "bootstrap": "^4.4.1"
   },
   "devDependencies": {
-    "livereload": "^0.8.2"
+    "livereload": "^0.9.1"
   }
 }

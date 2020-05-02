@@ -20,8 +20,15 @@
   </div>
 
   <!--
+    {if="empty($_GET['sort'])"}
+      {function="uasort($tags, function($a, $b) { return ($a[count] < $b[count]) ? -1 : 1; })"}
+    {/if}
+
     {if="$_GET['sort']==='usage'"}
       {function="arsort($tags)"}
+    {/if}
+    {if="$_GET['sort']==='alpha'"}
+      { function="asort($tags)"}
     {/if}
   -->
 

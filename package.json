@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "A Shaarli theme build with Bootstrap (only)",
   "scripts": {
-    "develop": "livereload . --exts 'html'",
+    "develop": "npx livereload . --exts 'html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Elwin Schmitz <ik@elwin.nu>",
@@ -12,7 +12,5 @@
   "dependencies": {
     "bootstrap": "^4.4.1"
   },
-  "devDependencies": {
-    "livereload": "^0.9.1"
-  }
+  "devDependencies": {}
 }

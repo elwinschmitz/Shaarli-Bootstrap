@@ -183,7 +183,7 @@
 </div>
 
 {if="!empty($linkcount)"}
-  {if="$is_logged_in"}
+  {if="$is_logged_in and count($links)>1"}
     <div class="my-3 text-center">
       {$onlyPublic=($visibility==='public') ? ' ' : ''}
       {$onlyPrivate=($visibility==='private') ? ' ' : ''}

@@ -7,8 +7,8 @@ Shaarli-Bootstrap is a theme for [Shaarli](https://github.com/shaarli/Shaarli), 
 ## Goal
 The goal of this theme is to be as minimal as possible, using all the wonderful things Bootstrap has to offer, nothing more.
 
-The theme is HTML+CSS only, for now. Let's see how far we can get with it.
-The layout is focused on 'mobile' only, for now. (But works just fine on bigger screens.)
+The theme is `HTML`+`CSS` only, (with some cheating here and there). Let's see how far we can get with that.
+The layout is focused on 'mobile' use only, for now. (But works just fine on bigger screens.)
 
 
 ## Compatibility
@@ -38,3 +38,4 @@ If you would like to work on the theme and make changes, feel free! :)
   <https://github.com/feulf/raintpl/wiki/Documentation-for-web-designers>
 - Bootstrap:  
   <https://getbootstrap.com/docs/4.4/>
+

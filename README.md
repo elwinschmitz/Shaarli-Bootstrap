@@ -37,4 +37,4 @@ If you would like to work on the theme and make changes, feel free! :)
 - RainTPL syntax:  
   <https://github.com/feulf/raintpl/wiki/Documentation-for-web-designers>
 - Bootstrap:  
-  <https://getbootstrap.com/docs/4.3/>
+  <https://getbootstrap.com/docs/4.4/>

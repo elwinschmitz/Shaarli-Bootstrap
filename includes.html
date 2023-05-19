@@ -5,9 +5,9 @@
 
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css?v={$version_hash}" />
 {loop="$plugins_includes.css_files"}
-  <link rel="stylesheet" href="{$value}?v={$version_hash}" />
+  <link rel="stylesheet" href="../../{$value}?v={$version_hash}" />
 {/loop}
 {if="is_file('data/user.css')"}
-  <link rel="stylesheet" href="data/user.css?v={$version_hash}" />
+  <link rel="stylesheet" href="../../data/user.css?v={$version_hash}" />
 {/if}
 <link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch" title="{$shaarlititle} - {'Search'|t}" />
